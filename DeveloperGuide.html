@@ -39,14 +39,21 @@
 <li><a href="#logic-component">2.3. Logic component</a></li>
 <li><a href="#model-component">2.4. Model component</a></li>
 <li><a href="#storage-component">2.5. Storage component</a></li>
-<li><a href="#common-classes">2.6. Common classes</a></li>
+<li><a href="#email-component">2.6. Email component</a></li>
+<li><a href="#common-classes">2.7. Common classes</a></li>
 </ul>
 </li>
 <li><a href="#implementation">3. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#undo-redo-mechanism">3.1. Undo/Redo mechanism</a></li>
-<li><a href="#logging">3.2. Logging</a></li>
-<li><a href="#configuration">3.3. Configuration</a></li>
+<li><a href="#email-component-2">3.2. Email Component</a></li>
+<li><a href="#logging">3.3. Logging</a></li>
+<li><a href="#configuration">3.4. Configuration</a></li>
+<li><a href="#add-multiple-persons-feature">3.5. Add multiple persons feature</a></li>
+<li><a href="#theme-support">3.6. Theme Support</a></li>
+<li><a href="#commenting">3.7. Commenting</a></li>
+<li><a href="#making-appointments">3.8. Making Appointments</a></li>
+<li><a href="#merging-addressbook-data-file">3.9. Merging AddressBook data file</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -78,7 +85,19 @@
 </ul>
 </li>
 <li><a href="#user-stories">Appendix B: User Stories</a></li>
-<li><a href="#use-cases">Appendix C: Use Cases</a></li>
+<li><a href="#use-cases">Appendix C: Use Cases</a>
+<ul class="sectlevel2">
+<li><a href="#use-case-list-persons">C.1. Use case: List persons</a></li>
+<li><a href="#use-case-edit-person">C.2. Use case: Edit person</a></li>
+<li><a href="#use-case-delete-person">C.3. Use case: Delete person</a></li>
+<li><a href="#use-case-history">C.4. Use case:  History</a></li>
+<li><a href="#use-case-undo">C.5. Use case:  Undo</a></li>
+<li><a href="#use-case-export">C.6. Use case:  Export</a></li>
+<li><a href="#use-case-find">C.7. Use case:  Find</a></li>
+<li><a href="#use-case-email-login">C.8. Use case: Email Login</a></li>
+<li><a href="#use-case-email-send">C.9. Use case: Email Send</a></li>
+</ul>
+</li>
 <li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
 <li><a href="#glossary">Appendix E: Glossary</a></li>
 <li><a href="#product-survey">Appendix F: Product Survey</a></li>
@@ -333,6 +352,9 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 <li>
 <p><a href="#storage-component"><strong><code>Storage</code></strong></a> : Reads data from, and writes data to, the hard disk.</p>
 </li>
+<li>
+<p><a href="#email_component"><strong><code>Email</code></strong></a>: Manages emails credentials and sending and checking emails.</p>
+</li>
 </ul>
 </div>
 <div class="paragraph">
@@ -557,7 +579,37 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 </div>
 <div class="sect2">
-<h3 id="common-classes"><a class="link" href="#common-classes">2.6. Common classes</a></h3>
+<h3 id="email-component"><a class="link" href="#email-component">2.6. Email component</a></h3>
+<div class="imageblock">
+<div class="content">
+<img src="images/EmailClassDiagram.png" alt="EmailClassDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p><em>Figure 2.6.1: Structure of the Email Component</em></p>
+</div>
+<div class="paragraph">
+<p>API: <code>Email.java</code></p>
+</div>
+<div class="paragraph">
+<p>The <code>Email</code> component:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>stores a private <code>Authentication</code> object that holds user&#8217;s email credentials.</p>
+</li>
+<li>
+<p>stores the currently logged in email as a <code>String</code>.</p>
+</li>
+<li>
+<p>can send and check emails with the current credentials.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="common-classes"><a class="link" href="#common-classes">2.7. Common classes</a></h3>
 <div class="paragraph">
 <p>Classes used by multiple components are in the <code>seedu.addressbook.commons</code> package.</p>
 </div>
@@ -767,7 +819,31 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">3.2. Logging</a></h3>
+<h3 id="email-component-2"><a class="link" href="#email-component-2">3.2. Email Component</a></h3>
+<div class="paragraph">
+<p>The email component ultilised the external library <code>javax.mail</code> for sending and receiving emails.</p>
+</div>
+<div class="paragraph">
+<p>The <code>EmailManager.java</code> class implementing <code>Email</code> manages the login status by keeping an <code>Autheticator</code> object along with its email <code>String</code>.</p>
+</div>
+<div class="paragraph">
+<p>As the library <code>javax.mail</code> uses <code>IMAP</code> protocol for receving emails and <code>SMTP</code> for sending emails, the <code>EmailManager</code> also holds a <code>Hashtable</code> of <code>IMAP</code> hosts and <code>SMTP</code> hosts / ports for different email providers. This allows future support for more providers.</p>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">3.2.1. Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Implementation of <code>Email</code><br>
+<strong>Alternative 1 (current choice):</strong> Create a new <code>Email</code> Component<br>
+<strong>Pros:</strong> Can be further improved to work with other commands to quickly send emails to a group of people<br>
+<strong>Cons:</strong> Command line interface is not user friendly<br>
+<strong>Alternative 2:</strong> Use the built in browser to send emails<br>
+<strong>Pros:</strong> Already has the GUI which is user friendly, support for all email providers<br>
+<strong>Cons:</strong> However, it will be more difficult to work with other commands to send to a specific groups of contacts.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">3.3. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
@@ -805,9 +881,245 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect2">
-<h3 id="configuration"><a class="link" href="#configuration">3.3. Configuration</a></h3>
+<h3 id="configuration"><a class="link" href="#configuration">3.4. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="add-multiple-persons-feature"><a class="link" href="#add-multiple-persons-feature">3.5. Add multiple persons feature</a></h3>
+<div class="paragraph">
+<p>The feature to add multiple persons is facilitated by <code>AddMultipleCommand</code> which is a command that extends <code>UndoableCommand</code> i.e. <code>AddMultipleCommand</code> execution method is <code>executeUndoableCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>AddMultipleCommand</code> adds new persons in a similar fashion with the existing <code>AddCommand</code>. Both uses the method, <code>addPerson</code>, of the model to add a given person. Furthermore, both commands parses the persons particulars similarly.</p>
+</div>
+<div class="paragraph">
+<p>Nevertheless, there are subtle differences between <code>AddMultipleCommand</code> and <code>AddCommand</code>. Below are characteristics that pertains to <code>AddMultipleCommand</code>:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code>AddMultipleCommand</code> parses persons' particulars from data of a <code>.txt</code> file instead of user argument inputs.</p>
+</li>
+<li>
+<p>The <code>AddMultipleCommand</code> user argument inputs is a file name of the file that contains persons' particulars.</p>
+</li>
+<li>
+<p>The <code>AddMultipleCommand</code> is an independent command by itself i.e. calling undo/redo will undo/redo the entire data that was changed in the storage e.g. <code>Bob</code>, <code>Tom</code> and <code>Kat</code> was added, undoing will remove <code>Bob</code>, <code>Tom</code> and <code>Kat</code>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the add multiple persons operation works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddMultipleCommandSequenceDiagram.png" alt="AddMultipleCommandSequenceDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Parsing of persons' particulars</strong></p>
+</div>
+<div class="paragraph">
+<p>The <code>AddMultipleCommandParser</code> implements <code>Parser</code>, and it handles the parsing of user input file path and the data that contains in the <code>.txt</code> file.</p>
+</div>
+<div class="paragraph">
+<p>As shown in the sequence diagram above, <code>AddMultipleCommandParser</code> utilizes the FileUtil to retrieve the data as a String from the <code>.txt</code> file. The retrieved data is then transformed to be stored in an array split by <code>System.lineSeparator()</code> to be parsed based on each line.
+The result of the parsed data is stored in an <code>ArrayList</code>, then it is returned with the construction of <code>AddMultipleCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Implementation as an independent Undoable/Redoable command</strong></p>
+</div>
+<div class="paragraph">
+<p>The <code>AddMultipleCommand</code> contains two <code>ArrayList</code>; One <code>Person</code> array list to facilitate adding new persons and one <code>ReadOnlyPerson</code> array list to facilitate deletion of persons in the event of unexpected result that requires the command to roll back.</p>
+</div>
+<div class="paragraph">
+<p>The user executes a new <code>AddMultipleCommand</code>, <code>multiple ./data/personsToAdd.txt</code>, to add a list of persons' particulars contained in <code>personsToAdd.txt</code>.</p>
+</div>
+<div class="paragraph">
+<p>After the parsing of inputs and construction of a new <code>AddMultipleCommand</code>, the <code>ArrayList</code>, <code>readOnlyPeople</code> will point to the <code>personsList</code> that was passed in from <code>AddMultipleCommandParser</code> while <code>ArrayList</code>, <code>toAdd</code> will contain <code>Person</code> that was constructed with <code>personsList</code>.
+The below is a graphical representation of two examples <code>ArrayList</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddMultipleCommandInitializationDiagram.png" alt="AddMultipleCommandInitializationDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>A variable <code>numberOfPersonsAdded</code> is used to keep track of <code>Person</code> added sequentially to the storage from <code>toAdd</code>.
+In the event when an error occur, a loop is initiated to delete the <code>ReadOnlyPerson</code> that contain in <code>readOnlyPeople</code> sequentially; the number of times the loop runs is based on <code>numberOfPersonsAdded</code>.
+As such, no persons will be stored in the storage if the execution fails.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddMultipleCommandExecutionErrorDiagram.png" alt="AddMultipleCommandExecutionErrorDiagram" width="800">
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">3.5.1. Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Implementation of <code>AddMultipleCommand</code><br>
+<strong>Alternative 1 (current choice):</strong> Add a new command <code>AddMultipleCommand</code><br>
+<strong>Pros:</strong> Flexibility in using other data structures to store person data that will be added.<br>
+<strong>Cons:</strong> Additional data structures that might cost more space.<br>
+<strong>Alternative 2:</strong> Enhance the current <code>AddCommand</code><br>
+<strong>Pros:</strong> Uses almost entirely existing methods to implement.<br>
+<strong>Cons:</strong> Restrictive data structure that do not support adding multiple persons.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="theme-support"><a class="link" href="#theme-support">3.6. Theme Support</a></h3>
+<div class="paragraph">
+<p>Theme support is implemented by leveraging the separation of styling from views since <code>css</code> files can be created by the end user, and imported into <code>fxml</code> views.<br></p>
+</div>
+<div class="paragraph">
+<p>Currently, v1.2 is shipped with two themes, <strong>Dark</strong> and <strong>Light</strong>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Importing Styles at Runtime</strong></p>
+</div>
+<div class="paragraph">
+<p>By default, <code>fxml</code> files in the AddressBook application contain the line <code>&lt;URL value="@THEME.css" /&gt;</code> to import CSS stylesheets.</p>
+</div>
+<div class="paragraph">
+<p>For a user selectable theme, this declaration is removed from each <code>fxml</code> file, and replaced by a method call via each model&#8217;s associated <code>javafx.scene.Scene</code> object. Styling is now set in the pattern:<br>
+<code>scene.getStylesheets().add(THEME RESOURCE);</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Saving Theme as User Preference</strong></p>
+</div>
+<div class="paragraph">
+<p>User Preferences are saved and loaded by default from the <code>preferences.json</code> file in the parent directory. The current user theme is also saved in this file as the key-value pair <code>currentUserTheme: THEME_NAME</code>.</p>
+</div>
+<div class="paragraph">
+<p>The User Preferences wrapper class is then updated to incorporate getters and setters for this new attribute, and each model may now access the current user theme to load the proper stylesheet at runtime.</p>
+</div>
+<div class="paragraph">
+<p><strong>Allowing User to Preview Themes</strong></p>
+</div>
+<div class="paragraph">
+<p>Theme previews are supported with thumbnails. Each thumbnail is simply a screenshot of the selected theme loaded in the AddressBook application.</p>
+</div>
+<div class="paragraph">
+<p>These theme preview thumbnails are placed in <code>/images/theme_thumbnails</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>GUI Interface for Theme Selection</strong></p>
+</div>
+<div class="paragraph">
+<p>Similar to the help window, a <strong>Theme Selection</strong> window has been added to the application to facilitate theme switching.</p>
+</div>
+<div class="paragraph">
+<p>The view is declared in <code>ThemeSelectionWindow.fxml</code> and controlled by <code>ThemeSelectionWindow.java</code>. This windows is created and opened after an <code>onAction</code> event from a menu button in <code>MainWindow.java</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Improvements for Scalability</strong></p>
+</div>
+<div class="paragraph">
+<p>In the next version a format will be incorporated to standardize theme name, resource location, thumbnail. With this, the end user can create and load multiple custom themes into the AddressBook application.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="commenting"><a class="link" href="#commenting">3.7. Commenting</a></h3>
+<div class="paragraph">
+<p>The commenting feature was implemented as an end-to-end feature that touched upon all components.</p>
+</div>
+<div class="paragraph">
+<p>The implementation process consisted of<br>
+1) Introducing an empty 'comment' command which does nothing,<br>
+2) making the command accept arguments,<br>
+3) modify the UI by adding room for 'comment' in the 'PersonCard',<br>
+4) adding a 'Comment' class,<br>
+5) making changes to Storage by adding 'comment' field to 'XmlAdaptedPerson' class, and finally,<br>
+6) implementing 'CommentCommand#execute()' in logic.</p>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.7.1. Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Implementation of <code>Comment</code><br>
+<strong>Alternative 1 (current choice):</strong> Simply create a new <code>Comment</code> Component<br>
+<strong>Pros:</strong> Works well with the already existing commands and can be modified easily<br>
+<strong>Cons:</strong> Command line interface is not user friendly<br>
+<strong>Alternative 2:</strong> Create the 'comment' feature with a more user-friendly (post-it like) interface<br>
+<strong>Pros:</strong> This GUI will be user-friendly, being close to our familiar habit of post and scrapping post-it notes<br>
+<strong>Cons:</strong> The present project lacks the GUI to implement this. It may also be more difficult to work with other commands.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="making-appointments"><a class="link" href="#making-appointments">3.8. Making Appointments</a></h3>
+<div class="paragraph">
+<p>The appointment feature was implemented as an end-to-end feature that added modifications to all components.</p>
+</div>
+<div class="paragraph">
+<p>The implementation process consisted of first creating the appoint command which behaves just like the comment command, making the new command accept arguments, adding extra line in Person Card reserved for the appointment information, and implementing the Appoint Command execution in Logic.</p>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.8.1. Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Implementation of <code>Appoint</code><br>
+<strong>Alternative 1 (current choice):</strong> Simply create a new <code>Appoint</code> Component which behaves very similarly to the <code>Comment</code> feature<br>
+<strong>Pros:</strong> Works well with the already existing commands and can be modified easily<br>
+<strong>Cons:</strong> Command line interface is not user friendly &amp; the Appointment acts just like a normal comment<br>
+<strong>Alternative 2:</strong> Create the 'appoint' feature defined in a more structured class which restricts the formatting of the appointment<br>
+<strong>Pros:</strong> This restriction of the formatting will prevent the user from inserting any information that are not appointments<br>
+<strong>Cons:</strong> The formatting restriction may diminish the freedom the user may have when allocating appointments</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="possible-improvements"><a class="link" href="#possible-improvements">3.8.2. Possible Improvements</a></h4>
+<div class="paragraph">
+<p>1) Further modify this feature so that every new appointment checks if the time clashes with any pre-existing appointments
+2) Make multiple appointments for one person
+3) Contruct a new GUI where all the appointments can be viewed on one screen</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="merging-addressbook-data-file"><a class="link" href="#merging-addressbook-data-file">3.9. Merging AddressBook data file</a></h3>
+<div class="paragraph">
+<p>The feature to merge a new address book data into the current address book default storage file (i.e. <code>addressBookFilePath</code> specified in <code>preferences.json</code>) is facilitated by <code>MergeCommand</code>.
+The <code>MergeCommand</code> extends <code>UndoableCommand</code> i.e. it execution method is <code>executeUndoableCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p>When the command is executed, the data of the new file is loaded with XmlFileStorage then it is transformed to <code>Observable&lt;ReadOnlyPerson&gt;</code>.
+Thereafter, the model will merge the person in <code>Observable&lt;ReadOnlyPerson&gt;</code> list with the default data.</p>
+</div>
+<div class="paragraph">
+<p>In the merging process the model will compare the data (i.e. persons contain inside the <code>UniquePersonsList</code>) in <code>addressBook</code> with the <code>ReadOnlyPerson</code> object.
+While duplicated persons are ignored, unique persons will be added into the default data storage with the <code>ModelManager</code> 's <code>addPerson(ReadOnlyPerson)</code> method.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the merge operation works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/MergeCommandSequenceDiagram.png" alt="MergeCommandSequenceDiagram" width="800">
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.9.1. Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Implementation of <code>MergeCommand</code><br>
+<strong>Alternative 1 (current choice):</strong> Utilizes the <code>ModelManager</code> 's <code>addPerson</code> method to merge new persons into the default data file<br>
+<strong>Pros:</strong> Retain the current design of <code>Model</code> component without adding new attributes in <code>ModelManager</code> .<br>
+<strong>Cons:</strong> When the new file to merge contain large amount unique persons that can be merged, the <code>Logger</code> will log a large number of person added during the merge.<br>
+<strong>Alternative 2:</strong> Using the <code>EventsCenter</code> in <code>MergeCommand</code> to post and event to allow the storage to handle the request<br>
+<strong>Pros:</strong> Allow <code>Storage</code> components to handle the merging of data.<br>
+<strong>Cons:</strong> Hard to catch unexpected exceptions as <code>EventsCenter</code> 's <code>post</code> method do not throw exceptions.
+<strong>Alternative 3:</strong> Include <code>AddressBookStorage</code> as an attribute of <code>ModelManager</code><br>
+<strong>Pros:</strong> Allow <code>Storage</code> components to handle the merging of data.<br>
+<strong>Cons:</strong> Tighter coupling as now <code>AddressBookStorage</code> is associated with <code>ModelManager</code> .<br>
+<strong>Alternative 4:</strong> Include <code>AddressBookStorage</code> as an attribute of <code>LogicManager</code><br>
+<strong>Pros:</strong> Allow <code>Storage</code> components to handle the merging of data.<br>
+<strong>Cons:</strong> Disrupt the design of <code>Logic</code> component.<br></p>
+</div>
 </div>
 </div>
 </div>
@@ -1708,39 +2020,177 @@ for <code>RemarkCommandParser</code>.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">new user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">see usage instructions</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">refer to instructions when I forget how to use the App</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">add a new person</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">be able to sort my contacts both by their first name or last name</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">delete a person</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">remove entries that I no longer need</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">have a "comment" section for each contact</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">record personal/miscellaneous information about the person</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">find a person by name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">locate details of persons without having to go through the entire list</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">export all saved contacts and print out</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">refer to when I can&#8217;t use the software</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add and create tags and add them to contacts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quickly find related personnels when needs be</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add and create tags and add them to contacts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quickly find related personnels when needs be</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">be able to edit the contact details</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">update when my contacts change their particulars</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">have the option to favourite some contacts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">retrieve the information of contacts that I will frequently access</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">able to search my contacts by tags</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">know my relationship with the contact</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">add a person&#8217;s details</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">use the saved details to contact him/her</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">new user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">use the graphical interface</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">easily perform operations</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">new user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see tutorial bubbles the first time I use the software</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">familiarise myself with the features</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">forgetful user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">use only a small part of a person&#8217;s details to find his or her contacts</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">forgetful user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">attach an image to a contact</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remember his name / face later</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">be able to store the birthday of my customers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remember their birthday</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tutor with many new students each semester</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">be able add multiple students</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">update my address book quickly each new semester</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">be able to email my contacts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">update them with the latest products information</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">hide <a href="#private-contact-detail">private contact details</a> by default</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">minimize chance of someone else seeing them by accident</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">export my address book to a readable file format (e.g. CSV, Excel spreadsheet)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">share the address book contacts with other people</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">user with many persons in the address book</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">sort persons by name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">locate a person easily</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">link contacts with URLs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">easily access their social media profiles</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user / businessman</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">able to create "events" where I set the time/location/content and invite contacts to attend the event</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">open a sending mail window by clicking on a contact&#8217;s address</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">email him / her faster</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quickly exports a group of contacts into .vcf</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">load them onto my smartphone</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">have different themes for the address book</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">use one that suits my preference</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">main tutor with many assistant tutors</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">merge the different address book of my assistant tutors</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">have all the students contact</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tutor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keep track of my student&#8217;s grades as a part of their contact information (maybe the information should be tucked in a relatively "hidden" section)</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tutor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">have an option to blast emails to a group of contacts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disseminate informations quickly</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tutor or a businessperson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">have an option to quickly generate a visual timetable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">easily refer to to make new appointment / tutorial slots</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tutor of many students</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see a notification when I try to add an already occupied time slot</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">my timetable won&#8217;t clash</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tutor / businessman</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">have an option to set an alarm before a meeting / tutorial slot</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">won&#8217;t forget</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">salesperson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">receive notification of my contacts' birthday</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">remember to send them well wishes</p></td>
 </tr>
 </tbody>
 </table>
@@ -1755,7 +2205,170 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="paragraph">
 <p>(For all use cases below, the <strong>System</strong> is the <code>AddressBook</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
 </div>
-<h3 id="use-case-delete-person" class="discrete">Use case: Delete person</h3>
+<h3 id="use-case-add-person" class="discrete">Use case: Add person</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to add a new person</p>
+</li>
+<li>
+<p>User gives details of the information to be added, following the appropriate formatting</p>
+</li>
+<li>
+<p>AddressBook adds the person</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The user does not follow the specified format.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a1. AddressBook shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3a. The given name already exists.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. AddressBook shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="use-case-list-persons"><a class="link" href="#use-case-list-persons">C.1. Use case: List persons</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to list contacts.</p>
+</li>
+<li>
+<p>AddressBook lists all persons in the book.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a. The book is empty.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-edit-person"><a class="link" href="#use-case-edit-person">C.2. Use case: Edit person</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to edit a person</p>
+</li>
+<li>
+<p>AddressBook shows a list of persons</p>
+</li>
+<li>
+<p>User requests to edit a specific person in the list</p>
+</li>
+<li>
+<p>AddressBook updates that person</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The AddressBook is empty.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+<li>
+<p>3a. The index provided is invalild</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. AddressBook shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3b. The user provides no information to update</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3b1. AddressBook shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3c. The iuser violates the specified format</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3c1. AddressBook shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-delete-person"><a class="link" href="#use-case-delete-person">C.3. Use case: Delete person</a></h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -1804,8 +2417,471 @@ for <code>RemarkCommandParser</code>.</p>
 </li>
 </ul>
 </div>
+<h3 id="use-case-adding-multiple-persons" class="discrete">Use case: Adding multiple persons</h3>
 <div class="paragraph">
-<p>{More to be added}</p>
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to add multiple persons from a <code>.txt</code> file</p>
+</li>
+<li>
+<p>AddressBook parse persons' particulars from file</p>
+</li>
+<li>
+<p>AddressBook adds all persons in the file</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The file does not exist.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2a1. AddressBook shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b. The persons' particulars format are invalid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2b1. AddressBook shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3a. The file contain person(s) that already exist in AddressBook.</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. AddressBook deletes all successfully added persons prior to duplicated persons.</p>
+</li>
+<li>
+<p>3a2. AddressBook shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-history"><a class="link" href="#use-case-history">C.4. Use case:  History</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to list the history of commands</p>
+</li>
+<li>
+<p>AddressBook lists the history of commands</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. There are no previous commands</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-undo"><a class="link" href="#use-case-undo">C.5. Use case:  Undo</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to undo the previous command</p>
+</li>
+<li>
+<p>AddressBook undoes the previous command</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The previous command is not an undoable command (add, delete, edit, clear).</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-export"><a class="link" href="#use-case-export">C.6. Use case:  Export</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to export the addressbook to a <code>.txt</code> file</p>
+</li>
+<li>
+<p>AddressBook exports the addressbook to a <code>.txt</code> file in the specified folder</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The specfied path is not accessible</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2a1. AddressBook shows an error message</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-find"><a class="link" href="#use-case-find">C.7. Use case:  Find</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to find persons with keywords</p>
+</li>
+<li>
+<p>AddressBook shows a list of person(s) found with the keywords</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>1a. The input format is invalid</p>
+<div class="ulist">
+<ul>
+<li>
+<p>1a1. AddressBook shows an error message</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2a. The addressbook is empty</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2a1. AddressBook returns list of 0 person found.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-email-login"><a class="link" href="#use-case-email-login">C.8. Use case: Email Login</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User attempts to log in with an email and password</p>
+</li>
+<li>
+<p>AddressBook saves the credentials</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The email and password combination is incorrect.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2a1. AddressBook shows an error message</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2b. The Internet connection is not working</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2b1. Addressbook shows an error message</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2c. The email does not have "Allow less secure apps" enabled.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2c1. AddressBook shows an error message</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2d. The email format is not valid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2d1. AddressBook shows an error message</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-case-email-send"><a class="link" href="#use-case-email-send">C.9. Use case: Email Send</a></h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Users attenpts to send an email with a title and a body to a list of recipients.</p>
+</li>
+<li>
+<p>AddressBook uses the logged in email and sends the email message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. There is not email currently logged in.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2a1. AddressBook does not send the email.</p>
+</li>
+<li>
+<p>2a2. AddressBook shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2b. The recipients emails have one or more invalid emails.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2b1. AddressBook does not send the email.</p>
+</li>
+<li>
+<p>2b2. AddressBook shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>2c. The Internet connection is not working</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2c1. AddressBook does not send the email.</p>
+</li>
+<li>
+<p>2c2. AddressBook shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h3 id="use-case-merging-storage-files" class="discrete">Use case: Merging storage files</h3>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to merge a given file to default storage file</p>
+</li>
+<li>
+<p>AddressBook merges the data of the two files</p>
+</li>
+<li>
+<p>AddressBook output the merged data file to a specified default path</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2a. The user given file does not exist.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2a1. AddressBook shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2b. The persons' particulars format are invalid.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2b1. AddressBook shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>2c. The given file contain person(s) that already exist in AddressBook.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>2c1. AddressBook ignores the duplicated person(s) and sieve out unique person(s) from the given file.</p>
+<div class="paragraph">
+<p>Use case resumes at step 2.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a. The merged data file does not exist</p>
+<div class="ulist">
+<ul>
+<li>
+<p>3c1. AddressBook creates the file</p>
+<div class="paragraph">
+<p>Use case resumes at step 3.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -1823,6 +2899,27 @@ for <code>RemarkCommandParser</code>.</p>
 <li>
 <p>A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.</p>
 </li>
+<li>
+<p>Should be backwards compatible with data stored by earlier version.</p>
+</li>
+<li>
+<p>Software should be well tested.</p>
+</li>
+<li>
+<p>Should be able to be used by a novice user who had never use address book application before.</p>
+</li>
+<li>
+<p>Should be able to respond to any commands within 5 seconds.</p>
+</li>
+<li>
+<p>Should be able to recover records of address book in event of program crash.</p>
+</li>
+<li>
+<p>Should have a well documented user guide to facilitate novice user.</p>
+</li>
+<li>
+<p>The data should be stored locally.</p>
+</li>
 </ol>
 </div>
 <div class="paragraph">
@@ -1833,6 +2930,46 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="sect1">
 <h2 id="glossary"><a class="link" href="#glossary">Appendix E: Glossary</a></h2>
 <div class="sectionbody">
+<div id="address-book" class="paragraph">
+<p>Address Book</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Collection of all persons data used by application</pre>
+</div>
+</div>
+<div id="person" class="paragraph">
+<p>Person</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Represents a particular collection of data associated with one entry in the address book.</pre>
+</div>
+</div>
+<div id="command" class="paragraph">
+<p>Command</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>An action executed by the application on the address book.</pre>
+</div>
+</div>
+<div id="keyword" class="paragraph">
+<p>Keyword</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Specifier used to query data, (ie. part of name, phone number, address).</pre>
+</div>
+</div>
+<div id="Tag" class="paragraph">
+<p>Tag</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>A custom specifier to categorize contacts by similarity, (ie. 'friends', 'family', 'colleagues').</pre>
+</div>
+</div>
 <div id="mainstream-os" class="paragraph">
 <p>Mainstream OS</p>
 </div>
@@ -1891,7 +3028,7 @@ for <code>RemarkCommandParser</code>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-09-21 15:57:58 +00:00
+Last updated 2017-11-06 17:14:24 +00:00
 </div>
 </div>
 </body>

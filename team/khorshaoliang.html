@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.3">
+<title>Khor Shao Liang - Project Portfolio</title>
+<link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Khor Shao Liang - Project Portfolio</h1>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="project-addressbook-level-4"><a class="link" href="#project-addressbook-level-4">Project: AddressBook - Level 4</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>AddressBook - Level 4 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 6 kLoC.</p>
+</div>
+<div class="paragraph">
+<p><strong>Code contributed</strong>: [<a href="https://github.com/KhorSL/main">Functional code</a>] [<a href="https://github.com/KhorSL/main">Test code</a>]</p>
+</div>
+<div class="sect2">
+<h3 id="enhancement-added-add-multiple-persons-from-code-txt-code-file"><a class="link" href="#enhancement-added-add-multiple-persons-from-code-txt-code-file">Enhancement Added: Add multiple persons from <code>.txt</code> file</a></h3>
+<div class="sect3">
+<h4 id="external-behavior"><a class="link" href="#external-behavior">External behavior</a></h4>
+<hr>
+<div class="paragraph">
+<p><mark>Start of Extract [from: User Guide]</mark></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-multiple-persons-code-multiple-code"><a class="link" href="#adding-multiple-persons-code-multiple-code">Adding multiple persons: <code>multiple</code></a></h3>
+<div class="paragraph">
+<p>Adds multiple persons to the address book from a given file path of a <code>.txt</code> file.<br>
+Default avatar folder: <code>./images/avatars</code><br>
+Format: <code>multiple FILE_PATH</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>multiple ./data/personsToAdd.txt</code></p>
+</li>
+<li>
+<p><code>multiple ./data/newStudentsToAdd.txt</code></p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/MultipleCommand/TypeMultipleCommand.png" alt="TypeMultipleCommand" width=""800">
+</div>
+</div>
+<div class="paragraph">
+<p>The message display box will display successful persons that are added.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/MultipleCommand/MultipleCommandSuccess.png" alt="MultipleCommandSuccess" width=""800">
+</div>
+</div>
+<div class="paragraph">
+<p>Person format in <code>.txt</code> file: <code>n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS i/AVATAR_FILE_PATH [t/TAG]&#8230;&#8203;</code></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The format in the <code>.txt</code> file is the same as <code>add</code> command except without the <code>add</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Example of <code>.txt</code> file:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 i/john_doe.png<br>
+n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 r/criminal<br>
+n/Mary Jane t/friend e/maryjane@example.com a/Mary drive p/4567123 r/pretty</p>
+</div>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Multiple command is an undoable/redoable command
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/MultipleCommand/UndoCommandSuccessAfterMultiple.png" alt="UndoCommandSuccessAfterMultiple" width=""800">
+</div>
+</div>
+<div class="paragraph">
+<p><mark>End of Extract</mark></p>
+</div>
+<hr>
+<div class="sect3">
+<h4 id="justification"><a class="link" href="#justification">Justification</a></h4>
+<div class="paragraph">
+<p>Adding multiple persons will aid users (e.g. tutors) who need to add multiple persons,
+and it would be too tedious to add them one by one.
+With the new feature implemented it would improve such users convenience in using the software.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="enhancement-added-find-persons-by-name-tags-and-email"><a class="link" href="#enhancement-added-find-persons-by-name-tags-and-email">Enhancement Added: Find persons by name, tags and email</a></h3>
+<div class="sect3">
+<h4 id="external-behavior-2"><a class="link" href="#external-behavior-2">External behavior</a></h4>
+<hr>
+<div class="paragraph">
+<p><mark>Start of Extract [from: User Guide]</mark></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="locating-persons-by-keywords-code-find-code"><a class="link" href="#locating-persons-by-keywords-code-find-code">Locating persons by keywords: <code>find</code></a></h3>
+<div class="paragraph">
+<p>Finds persons whose contain any of the given keywords.<br>
+Format: <code>find PREFIX_PERSON_ATTRIBUTE/KEYWORD [MORE_KEYWORDS]&#8230;&#8203; [MORE_PARAMETERS]&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The search is a <code>OR</code> search.
+e.g. finding <code>n/alex r/friends</code> will display all persons that name contain <code>alex</code> along with all persons that have <code>friends</code> tag</p>
+</li>
+<li>
+<p>The <code>OR</code> rule applies to all other individual attribute except <code>tags</code>.
+(i.e. persons matching at least one keyword will be returned except for <code>tags</code> field.)
+e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
+</li>
+<li>
+<p>The <code>AND</code> rule for searching applies to <code>tags</code> field
+e.g. <code>r/friends family</code> will return persons with tags that match both <code>friends</code> and <code>family</code></p>
+</li>
+<li>
+<p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
+</li>
+<li>
+<p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
+</li>
+<li>
+<p>When finding name, only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
+</li>
+<li>
+<p>When finding email, any part of the email will be matched e.g. <code>mail</code> will match <code>@gmail.com</code> and <code>@hotmail.com</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Searching for contacts with <code>friends</code> tag with the command <code>find r/friends</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/FindCommand/TypeFindCommandOne.png" alt="TypeFindCommandOne" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>The result of <code>find r/friends</code> will show all contacts with <code>friends</code> tag.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/FindCommand/FindCommandSuccessListOne.png" alt="FindCommandSuccessListOne" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Searching for contacts with <code>colleagues</code> and <code>friends</code> tags with the command <code>find r/colleagues friends</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/FindCommand/TypeFindCommandTwo.png" alt="TypeFindCommandTwo" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>The result of <code>find r/colleagues friends</code> will show all contacts have both <code>colleagues</code> and <code>friends</code> tags.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/FindCommand/FindCommandSuccessTwo.png" alt="FindCommandSuccessTwo" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find n/John</code><br>
+Returns <code>john</code> and <code>John Doe</code></p>
+</li>
+<li>
+<p><code>find r/friends family</code><br>
+Returns any person with <code>friends</code> tag and <code>family</code> tag<br></p>
+</li>
+<li>
+<p><code>find e/@gmail.com</code><br>
+Returns any person whose email contain <code>@gmail.com</code></p>
+</li>
+<li>
+<p><code>find n/Betsy Tim John</code><br>
+Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code></p>
+</li>
+<li>
+<p><code>find n/Betsy Tim John r/friends</code><br>
+Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code> or any person with <code>friends</code> tag</p>
+</li>
+<li>
+<p><code>find n/Betsy Tim John r/friends e/@gmail.com</code><br>
+Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code>, any person with <code>friends</code> tag
+and any person whose email contain <code>@gmail.com</code></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Find command currently support finding of name, email and tags.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><mark>End of Extract</mark></p>
+</div>
+<hr>
+<div class="sect3">
+<h4 id="justification-2"><a class="link" href="#justification-2">Justification</a></h4>
+<div class="paragraph">
+<p>Allowing users to find persons based on tags will allow users to know the relationship with their contact.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="enhancement-added-merge-given-xml-file-to-default-storage-xml-file"><a class="link" href="#enhancement-added-merge-given-xml-file-to-default-storage-xml-file">Enhancement Added: Merge given XML file to default storage XML file</a></h3>
+<div class="sect3">
+<h4 id="external-behavior-3"><a class="link" href="#external-behavior-3">External behavior</a></h4>
+<hr>
+<div class="paragraph">
+<p><mark>Start of Extract [from: User Guide]</mark></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="merging-given-file-to-default-storage-file-code-merge-code"><a class="link" href="#merging-given-file-to-default-storage-file-code-merge-code">Merging given file to default storage file : <code>merge</code></a></h3>
+<div class="paragraph">
+<p>Merges the given <code>.xml</code> file to the default storage <code>.xml</code> file specified in <code>preferences.json</code>.<br>
+Format: <code>merge NEW_FILE_PATH</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>merge ./data/newFile.xml</code></p>
+</li>
+<li>
+<p><code>merge ./data/otherClass.xml</code></p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/MergeCommand/TypeMergeCommand.png" alt="TypeMergeCommand" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Unique persons that are successfully merge into the address book will appear in the person card list.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/MergeCommand/MergeCommandSuccess.png" alt="MergeCommandSuccess" width="800">
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Merge command is an undoable/redoable command
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/MergeCommand/UndoCommandSuccessAfterMerge.png" alt="UndoCommandSuccessAfterMerge" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p><mark>End of Extract</mark></p>
+</div>
+<hr>
+<div class="sect3">
+<h4 id="justification-3"><a class="link" href="#justification-3">Justification</a></h4>
+<div class="paragraph">
+<p>Main tutors with many assistant tutors is able to merge the different address book of my assistant tutors
+so as to have all the student contacts.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="project-gopost"><a class="link" href="#project-gopost">Project: GoPost!</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>GoPost! is an exciting platform that provide users a one-stop portal for all events needs. The web application offers a spectrum of features and utility. Users will be able to create events, create a registration forms, manage their events schedules, and many more.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2017-11-06 17:14:24 +00:00
+</div>
+</div>
+</body>
+</html>

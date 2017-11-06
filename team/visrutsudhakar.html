@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.3">
+<title>Visrut Sudhakar - Project Portfolio</title>
+<link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Visrut Sudhakar - Project Portfolio</h1>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="project-addressbook-level-4"><a class="link" href="#project-addressbook-level-4">Project: AddressBook - Level 4</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>AddressBook - Level 4 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 6 kLoC.</p>
+</div>
+<div class="paragraph">
+<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] {give links to collated code files}</p>
+</div>
+<div class="sect2">
+<h3 id="enhancement-added-theme-selection"><a class="link" href="#enhancement-added-theme-selection">Enhancement Added: Theme selection</a></h3>
+<hr>
+<div class="paragraph">
+<p><mark>Start of Extract [from: User Guide]</mark></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="selecting-an-application-theme"><a class="link" href="#selecting-an-application-theme">Selecting an application theme</a></h3>
+<div class="paragraph">
+<p>From the top menu bar, select <code>Themes</code>, and then <code>Select Themes</code>.</p>
+</div>
+<div class="paragraph">
+<p>Click on a theme, the left side label will indicate which theme is currently selected.</p>
+</div>
+<div class="paragraph">
+<p><strong>Important!</strong><br>
+The application must be <strong>restarted</strong> before the newly selected theme is activated.</p>
+</div>
+<div class="paragraph">
+<p><mark>End of Extract</mark></p>
+</div>
+<hr>
+<div class="paragraph">
+<p><mark>Start of Extract [from: Developer Guide]</mark></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="theme-support"><a class="link" href="#theme-support">Theme Support</a></h3>
+<div class="paragraph">
+<p>Theme support is implemented by leveraging the separation of styling from views since <code>css</code> files can be created by the end user, and imported into <code>fxml</code> views.<br></p>
+</div>
+<div class="paragraph">
+<p>Currently, v1.2 is shipped with two themes, <strong>Dark</strong> and <strong>Light</strong>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Importing Styles at Runtime</strong></p>
+</div>
+<div class="paragraph">
+<p>By default, <code>fxml</code> files in the AddressBook application contain the line <code>&lt;URL value="@THEME.css" /&gt;</code> to import CSS stylesheets.</p>
+</div>
+<div class="paragraph">
+<p>For a user selectable theme, this declaration is removed from each <code>fxml</code> file, and replaced by a method call via each model&#8217;s associated <code>javafx.scene.Scene</code> object. Styling is now set in the pattern:<br>
+<code>scene.getStylesheets().add(THEME RESOURCE);</code></p>
+</div>
+<div class="paragraph">
+<p><strong>Saving Theme as User Preference</strong></p>
+</div>
+<div class="paragraph">
+<p>User Preferences are saved and loaded by default from the <code>preferences.json</code> file in the parent directory. The current user theme is also saved in this file as the key-value pair <code>currentUserTheme: THEME_NAME</code>.</p>
+</div>
+<div class="paragraph">
+<p>The User Preferences wrapper class is then updated to incorporate getters and setters for this new attribute, and each model may now access the current user theme to load the proper stylesheet at runtime.</p>
+</div>
+<div class="paragraph">
+<p><strong>Allowing User to Preview Themes</strong></p>
+</div>
+<div class="paragraph">
+<p>Theme previews are supported with thumbnails. Each thumbnail is simply a screenshot of the selected theme loaded in the AddressBook application.</p>
+</div>
+<div class="paragraph">
+<p>These theme preview thumbnails are placed in <code>/images/theme_thumbnails</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>GUI Interface for Theme Selection</strong></p>
+</div>
+<div class="paragraph">
+<p>Similar to the help window, a <strong>Theme Selection</strong> window has been added to the application to facilitate theme switching.</p>
+</div>
+<div class="paragraph">
+<p>The view is declared in <code>ThemeSelectionWindow.fxml</code> and controlled by <code>ThemeSelectionWindow.java</code>. This windows is created and opened after an <code>onAction</code> event from a menu button in <code>MainWindow.java</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Improvements for Scalability</strong></p>
+</div>
+<div class="paragraph">
+<p>In the next version a format will be incorporated to standardize theme name, resource location, thumbnail. With this, the end user can create and load multiple custom themes into the AddressBook application.</p>
+</div>
+<div class="paragraph">
+<p><mark>End of Extract</mark></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="enhancement-added-avatar-field-for-person-entry"><a class="link" href="#enhancement-added-avatar-field-for-person-entry">Enhancement Added: Avatar field for Person entry</a></h3>
+<div class="sect3">
+<h4 id="external-behavior"><a class="link" href="#external-behavior">External behavior</a></h4>
+<hr>
+<div class="paragraph">
+<p><mark>Start of Extract [from: User Guide]</mark></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-a-person-with-an-avatar-code-add-i-code"><a class="link" href="#adding-a-person-with-an-avatar-code-add-i-code">Adding a person with an avatar: <code>add i/</code></a></h3>
+<div class="paragraph">
+<p>Adds a person to the address book with a custom avatar displayed<br>
+Default avatar folder: <code>./images/avatars</code><br>
+Format: <code>add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 i/john_doe.png</code></p>
+</div>
+<div class="paragraph">
+<p><mark>End of Extract</mark></p>
+</div>
+<hr>
+<div class="sect3">
+<h4 id="justification"><a class="link" href="#justification">Justification</a></h4>
+<div class="paragraph">
+<p>An avatar allows for another field to describe a person in the address book. This way, the user can keep track of their contacts in a graphical, user friendly manner.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2017-11-06 17:14:24 +00:00
+</div>
+</div>
+</body>
+</html>

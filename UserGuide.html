@@ -29,17 +29,26 @@
 <ul class="sectlevel2">
 <li><a href="#viewing-help-code-help-code">2.1. Viewing help : <code>help</code></a></li>
 <li><a href="#adding-a-person-code-add-code">2.2. Adding a person: <code>add</code></a></li>
-<li><a href="#listing-all-persons-code-list-code">2.3. Listing all persons : <code>list</code></a></li>
-<li><a href="#editing-a-person-code-edit-code">2.4. Editing a person : <code>edit</code></a></li>
-<li><a href="#locating-persons-by-name-code-find-code">2.5. Locating persons by name: <code>find</code></a></li>
-<li><a href="#deleting-a-person-code-delete-code">2.6. Deleting a person : <code>delete</code></a></li>
-<li><a href="#selecting-a-person-code-select-code">2.7. Selecting a person : <code>select</code></a></li>
-<li><a href="#listing-entered-commands-code-history-code">2.8. Listing entered commands : <code>history</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code">2.9. Undoing previous command : <code>undo</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code">2.10. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">2.11. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">2.12. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">2.13. Saving the data</a></li>
+<li><a href="#adding-a-person-with-an-avatar-code-add-i-code">2.3. Adding a person with an avatar: <code>add i/</code></a></li>
+<li><a href="#adding-multiple-persons-code-multiple-code">2.4. Adding multiple persons: <code>multiple</code></a></li>
+<li><a href="#export-code-export-code">2.5. Export: <code>export</code></a></li>
+<li><a href="#listing-all-persons-code-list-code">2.6. Listing all persons : <code>list</code></a></li>
+<li><a href="#editing-a-person-code-edit-code">2.7. Editing a person : <code>edit</code></a></li>
+<li><a href="#locating-persons-by-keywords-code-find-code">2.8. Locating persons by keywords: <code>find</code></a></li>
+<li><a href="#deleting-a-person-code-delete-code">2.9. Deleting a person : <code>delete</code></a></li>
+<li><a href="#selecting-a-person-code-select-code">2.10. Selecting a person : <code>select</code></a></li>
+<li><a href="#commenting-about-a-person-code-comment-code">2.11. Commenting about a person : <code>comment</code></a></li>
+<li><a href="#making-appointment-for-a-person-code-appoint-code">2.12. Making Appointment for a person : <code>appoint</code></a></li>
+<li><a href="#login-using-gmail-or-yahoo-account-code-email_login-code">2.13. Login using Gmail or Yahoo Account: <code>email_login</code></a></li>
+<li><a href="#sending-an-email-to-a-list-of-recipients-code-email_send-code">2.14. Sending an email to a list of recipients: <code>email_send</code></a></li>
+<li><a href="#listing-entered-commands-code-history-code">2.15. Listing entered commands : <code>history</code></a></li>
+<li><a href="#undoing-previous-command-code-undo-code">2.16. Undoing previous command : <code>undo</code></a></li>
+<li><a href="#redoing-the-previously-undone-command-code-redo-code">2.17. Redoing the previously undone command : <code>redo</code></a></li>
+<li><a href="#merging-given-file-to-default-storage-file-code-merge-code">2.18. Merging given file to default storage file : <code>merge</code></a></li>
+<li><a href="#clearing-all-entries-code-clear-code">2.19. Clearing all entries : <code>clear</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">2.20. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">2.21. Saving the data</a></li>
+<li><a href="#selecting-an-application-theme">2.22. Selecting an application theme</a></li>
 </ul>
 </li>
 <li><a href="#faq">3. FAQ</a></li>
@@ -148,7 +157,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <h3 id="adding-a-person-code-add-code"><a class="link" href="#adding-a-person-code-add-code">2.2. Adding a person: <code>add</code></a></h3>
 <div class="paragraph">
 <p>Adds a person to the address book<br>
-Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code></p>
+Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS i/AVATAR FILE PATH [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -177,14 +186,117 @@ A person can have any number of tags (including 0)
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-all-persons-code-list-code"><a class="link" href="#listing-all-persons-code-list-code">2.3. Listing all persons : <code>list</code></a></h3>
+<h3 id="adding-a-person-with-an-avatar-code-add-i-code"><a class="link" href="#adding-a-person-with-an-avatar-code-add-i-code">2.3. Adding a person with an avatar: <code>add i/</code></a></h3>
+<div class="paragraph">
+<p>Adds a person to the address book with a custom avatar displayed<br>
+Default avatar folder: <code>./images/avatars</code><br>
+Format: <code>add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 i/john_doe.png</code></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-multiple-persons-code-multiple-code"><a class="link" href="#adding-multiple-persons-code-multiple-code">2.4. Adding multiple persons: <code>multiple</code></a></h3>
+<div class="paragraph">
+<p>Adds multiple persons to the address book from a given file path of a <code>.txt</code> file.<br>
+Default avatar folder: <code>./images/avatars</code><br>
+Format: <code>multiple FILE_PATH</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>multiple ./data/personsToAdd.txt</code></p>
+</li>
+<li>
+<p><code>multiple ./data/newStudentsToAdd.txt</code></p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/MultipleCommand/TypeMultipleCommand.png" alt="TypeMultipleCommand" width=""800">
+</div>
+</div>
+<div class="paragraph">
+<p>The message display box will display successful persons that are added.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/MultipleCommand/MultipleCommandSuccess.png" alt="MultipleCommandSuccess" width=""800">
+</div>
+</div>
+<div class="paragraph">
+<p>Person format in <code>.txt</code> file: <code>n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS i/AVATAR_FILE_PATH [t/TAG]&#8230;&#8203;</code></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The format in the <code>.txt</code> file is the same as <code>add</code> command except without the <code>add</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Example of <code>.txt</code> file:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 i/john_doe.png<br>
+n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 r/criminal<br>
+n/Mary Jane t/friend e/maryjane@example.com a/Mary drive p/4567123 r/pretty</p>
+</div>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Multiple command is an undoable/redoable command
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/MultipleCommand/UndoCommandSuccessAfterMultiple.png" alt="UndoCommandSuccessAfterMultiple" width=""800">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="export-code-export-code"><a class="link" href="#export-code-export-code">2.5. Export: <code>export</code></a></h3>
+<div class="paragraph">
+<p>Exports the all contacts to a <code>.txt</code> file in a specified location.<br>
+Format: <code>export [FILETYPE] [PATH]</code><br></p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>export .txt C:/New Folder</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="listing-all-persons-code-list-code"><a class="link" href="#listing-all-persons-code-list-code">2.6. Listing all persons : <code>list</code></a></h3>
 <div class="paragraph">
 <p>Shows a list of all persons in the address book.<br>
 Format: <code>list</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-a-person-code-edit-code"><a class="link" href="#editing-a-person-code-edit-code">2.4. Editing a person : <code>edit</code></a></h3>
+<h3 id="editing-a-person-code-edit-code"><a class="link" href="#editing-a-person-code-edit-code">2.7. Editing a person : <code>edit</code></a></h3>
 <div class="paragraph">
 <p>Edits an existing person in the address book.<br>
 Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p>
@@ -229,15 +341,28 @@ Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all 
 </div>
 </div>
 <div class="sect2">
-<h3 id="locating-persons-by-name-code-find-code"><a class="link" href="#locating-persons-by-name-code-find-code">2.5. Locating persons by name: <code>find</code></a></h3>
+<h3 id="locating-persons-by-keywords-code-find-code"><a class="link" href="#locating-persons-by-keywords-code-find-code">2.8. Locating persons by keywords: <code>find</code></a></h3>
 <div class="paragraph">
-<p>Finds persons whose names contain any of the given keywords.<br>
-Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
+<p>Finds persons whose contain any of the given keywords.<br>
+Format: <code>find PREFIX_PERSON_ATTRIBUTE/KEYWORD [MORE_KEYWORDS]&#8230;&#8203; [MORE_PARAMETERS]&#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
+<li>
+<p>The search is a <code>OR</code> search.
+e.g. finding <code>n/alex r/friends</code> will display all persons that name contain <code>alex</code> along with all persons that have <code>friends</code> tag</p>
+</li>
+<li>
+<p>The <code>OR</code> rule applies to all other individual attribute except <code>tags</code>.
+(i.e. persons matching at least one keyword will be returned except for <code>tags</code> field.)
+e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
+</li>
+<li>
+<p>The <code>AND</code> rule for searching applies to <code>tags</code> field
+e.g. <code>r/friends family</code> will return persons with tags that match both <code>friends</code> and <code>family</code></p>
+</li>
 <li>
 <p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
 </li>
@@ -245,16 +370,45 @@ Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
 <p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
 </li>
 <li>
-<p>Only the name is searched.</p>
+<p>When finding name, only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
 </li>
 <li>
-<p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
-</li>
-<li>
-<p>Persons matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
+<p>When finding email, any part of the email will be matched e.g. <code>mail</code> will match <code>@gmail.com</code> and <code>@hotmail.com</code></p>
 </li>
 </ul>
 </div>
+</div>
+</div>
+<div class="paragraph">
+<p>Searching for contacts with <code>friends</code> tag with the command <code>find r/friends</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/FindCommand/TypeFindCommandOne.png" alt="TypeFindCommandOne" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>The result of <code>find r/friends</code> will show all contacts with <code>friends</code> tag.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/FindCommand/FindCommandSuccessListOne.png" alt="FindCommandSuccessListOne" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Searching for contacts with <code>colleagues</code> and <code>friends</code> tags with the command <code>find r/colleagues friends</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/FindCommand/TypeFindCommandTwo.png" alt="TypeFindCommandTwo" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>The result of <code>find r/colleagues friends</code> will show all contacts have both <code>colleagues</code> and <code>friends</code> tags.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/FindCommand/FindCommandSuccessTwo.png" alt="FindCommandSuccessTwo" width="800">
 </div>
 </div>
 <div class="paragraph">
@@ -263,18 +417,47 @@ Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>find John</code><br>
+<p><code>find n/John</code><br>
 Returns <code>john</code> and <code>John Doe</code></p>
 </li>
 <li>
-<p><code>find Betsy Tim John</code><br>
+<p><code>find r/friends family</code><br>
+Returns any person with <code>friends</code> tag and <code>family</code> tag<br></p>
+</li>
+<li>
+<p><code>find e/@gmail.com</code><br>
+Returns any person whose email contain <code>@gmail.com</code></p>
+</li>
+<li>
+<p><code>find n/Betsy Tim John</code><br>
 Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code></p>
+</li>
+<li>
+<p><code>find n/Betsy Tim John r/friends</code><br>
+Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code> or any person with <code>friends</code> tag</p>
+</li>
+<li>
+<p><code>find n/Betsy Tim John r/friends e/@gmail.com</code><br>
+Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code>, any person with <code>friends</code> tag
+and any person whose email contain <code>@gmail.com</code></p>
 </li>
 </ul>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Find command currently support finding of name, email and tags.
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-person-code-delete-code"><a class="link" href="#deleting-a-person-code-delete-code">2.6. Deleting a person : <code>delete</code></a></h3>
+<h3 id="deleting-a-person-code-delete-code"><a class="link" href="#deleting-a-person-code-delete-code">2.9. Deleting a person : <code>delete</code></a></h3>
 <div class="paragraph">
 <p>Deletes the specified person from the address book.<br>
 Format: <code>delete INDEX</code></p>
@@ -315,7 +498,7 @@ Deletes the 1st person in the results of the <code>find</code> command.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="selecting-a-person-code-select-code"><a class="link" href="#selecting-a-person-code-select-code">2.7. Selecting a person : <code>select</code></a></h3>
+<h3 id="selecting-a-person-code-select-code"><a class="link" href="#selecting-a-person-code-select-code">2.10. Selecting a person : <code>select</code></a></h3>
 <div class="paragraph">
 <p>Selects the person identified by the index number used in the last person listing.<br>
 Format: <code>select INDEX</code></p>
@@ -356,7 +539,157 @@ Selects the 1st person in the results of the <code>find</code> command.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">2.8. Listing entered commands : <code>history</code></a></h3>
+<h3 id="commenting-about-a-person-code-comment-code"><a class="link" href="#commenting-about-a-person-code-comment-code">2.11. Commenting about a person : <code>comment</code></a></h3>
+<div class="paragraph">
+<p>Adds a comment about a specific user.<br>
+Format: <code>comment INDEX [c/COMMENT]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Comments on the person at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>comment 2 c/Likes to play computer games.</code><br>
+Selects the 2nd person in the address book and adds the above comment.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="making-appointment-for-a-person-code-appoint-code"><a class="link" href="#making-appointment-for-a-person-code-appoint-code">2.12. Making Appointment for a person : <code>appoint</code></a></h3>
+<div class="paragraph">
+<p>Adds an appointment time slot for a specific user.<br>
+Format: <code>appoint INDEX [ap/APPOINT]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Makes an appointment for the person at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>appoint 2 ap/20/10/2017 14:45</code><br>
+Selects the 2nd person in the address book and assigns the above appointment slot.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="login-using-gmail-or-yahoo-account-code-email_login-code"><a class="link" href="#login-using-gmail-or-yahoo-account-code-email_login-code">2.13. Login using Gmail or Yahoo Account: <code>email_login</code></a></h3>
+<div class="paragraph">
+<p>Logs in with a Gmail or Yahoo account to allow sending emails<br>
+Format: <code>email_login "[EMAIL]" "[PASSWORD]"</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>"[EMAIL]"</code> is the email used to login. Example: <code>"<a href="mailto:cs2013testacc@gmail.com">cs2013testacc@gmail.com</a>"</code></p>
+</li>
+<li>
+<p><code>"[PASSWORD]"</code> is the passwor. Example: <code>"testpass"</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>email_login "<a href="mailto:cs2103testacc@gmail.com">cs2103testacc@gmail.com</a>" "testpass"</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sending-an-email-to-a-list-of-recipients-code-email_send-code"><a class="link" href="#sending-an-email-to-a-list-of-recipients-code-email_send-code">2.14. Sending an email to a list of recipients: <code>email_send</code></a></h3>
+<div class="paragraph">
+<p>Sends an email to a list of recipients. Requires an logged in email using <code>email_login</code><br>
+Format: <code>email_send "[RECIPIENTS]" "[TITLE]" "[BODY]"</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>"[RECIPIENTS]"</code> is the list of recipients, separated by <code>;</code>. Example: <code>"<a href="mailto:cs2103testacc@gmail.com">cs2103testacc@gmail.com</a>;<a href="mailto:cs2103test@yahoo.com">cs2103test@yahoo.com</a>"</code></p>
+</li>
+<li>
+<p><code>"[TITLE]"</code> is the title of the email. Example: <code>"Change of class schedule"</code></p>
+</li>
+<li>
+<p><code>"[BODY]"</code> is the body of the message. Example: <code>"The class schedule is changed to 4 pm"</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>email_send "<a href="mailto:cs2103testacc@gmail.com">cs2103testacc@gmail.com</a>" "Test Title" "Test Body"</code><br>
+send an email with given title and body to a single recipient.</p>
+</li>
+<li>
+<p><code>email_send "<a href="mailto:cs2103testacc@gmail.com">cs2103testacc@gmail.com</a>;<a href="mailto:cs2103testacc@yahoo.com">cs2103testacc@yahoo.com</a>" "Test Title" "Test Body"</code><br>
+send  an email with given title and body to a list of recipients.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">2.15. Listing entered commands : <code>history</code></a></h3>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code></p>
@@ -377,7 +710,7 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">2.9. Undoing previous command : <code>undo</code></a></h3>
+<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">2.16. Undoing previous command : <code>undo</code></a></h3>
 <div class="paragraph">
 <p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
 Format: <code>undo</code></p>
@@ -422,7 +755,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </div>
 </div>
 <div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">2.10. Redoing the previously undone command : <code>redo</code></a></h3>
+<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">2.17. Redoing the previously undone command : <code>redo</code></a></h3>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
 Format: <code>redo</code></p>
@@ -454,24 +787,87 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">2.11. Clearing all entries : <code>clear</code></a></h3>
+<h3 id="merging-given-file-to-default-storage-file-code-merge-code"><a class="link" href="#merging-given-file-to-default-storage-file-code-merge-code">2.18. Merging given file to default storage file : <code>merge</code></a></h3>
+<div class="paragraph">
+<p>Merges the given <code>.xml</code> file to the default storage <code>.xml</code> file specified in <code>preferences.json</code>.<br>
+Format: <code>merge NEW_FILE_PATH</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>merge ./data/newFile.xml</code></p>
+</li>
+<li>
+<p><code>merge ./data/otherClass.xml</code></p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/MergeCommand/TypeMergeCommand.png" alt="TypeMergeCommand" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Unique persons that are successfully merge into the address book will appear in the person card list.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/MergeCommand/MergeCommandSuccess.png" alt="MergeCommandSuccess" width="800">
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Merge command is an undoable/redoable command
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/MergeCommand/UndoCommandSuccessAfterMerge.png" alt="UndoCommandSuccessAfterMerge" width="800">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">2.19. Clearing all entries : <code>clear</code></a></h3>
 <div class="paragraph">
 <p>Clears all entries from the address book.<br>
 Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">2.12. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">2.20. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">2.13. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">2.21. Saving the data</a></h3>
 <div class="paragraph">
 <p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="selecting-an-application-theme"><a class="link" href="#selecting-an-application-theme">2.22. Selecting an application theme</a></h3>
+<div class="paragraph">
+<p>From the top menu bar, select <code>Themes</code>, and then <code>Select Themes</code>.</p>
+</div>
+<div class="paragraph">
+<p>Click on a theme, the left side label will indicate which theme is currently selected.</p>
+</div>
+<div class="paragraph">
+<p><strong>Important!</strong><br>
+The application must be <strong>restarted</strong> before the newly selected theme is activated.</p>
 </div>
 </div>
 </div>
@@ -495,6 +891,14 @@ There is no need to save manually.</p>
 e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
 </li>
 <li>
+<p><strong>Multiple</strong> <code>multiple FILE_NAME.txt</code><br>
+e.g <code>multiple personsToAdd.txt</code></p>
+</li>
+<li>
+<p><strong>Export</strong> <code>export [FILETYPE] [EXPORT_PATH]</code><br>
+e.g <code>export .txt C:/Users/This User/Desktop</code></p>
+</li>
+<li>
 <p><strong>Clear</strong> : <code>clear</code></p>
 </li>
 <li>
@@ -510,6 +914,14 @@ e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
 e.g. <code>find James Jake</code></p>
 </li>
 <li>
+<p><strong>Comment</strong> : <code>comment INDEX [c/COMMENT]</code><br>
+e.g. <code>comment 4 c/Likes to code</code></p>
+</li>
+<li>
+<p><strong>Appoint</strong> : <code>appoint INDEX [c/APPOINTMENT]</code><br>
+e.g. <code>appoint 2 ap/20/10/2017 14:30</code></p>
+</li>
+<li>
 <p><strong>List</strong> : <code>list</code></p>
 </li>
 <li>
@@ -520,6 +932,14 @@ e.g. <code>find James Jake</code></p>
 e.g.<code>select 2</code></p>
 </li>
 <li>
+<p><strong>Email Login</strong>: <code>email_login "[EMAIL]" "PASSWORD"</code><br>
+e.g. <code>email_login "<a href="mailto:cs2103testacc@gmail.com">cs2103testacc@gmail.com</a>" "testpass"</code></p>
+</li>
+<li>
+<p><strong>Email Send</strong>: <code>email_send "[RECIPIENTS]" "[TITLE]" "[BODY]"</code><br>
+e.g. <code>email_send "<a href="mailto:firstemail@gmail.com">firstemail@gmail.com</a>;<a href="mailto:secondemail@yahoo.com">secondemail@yahoo.com</a>" "Test title" "Test Body"</code></p>
+</li>
+<li>
 <p><strong>History</strong> : <code>history</code></p>
 </li>
 <li>
@@ -528,6 +948,9 @@ e.g.<code>select 2</code></p>
 <li>
 <p><strong>Redo</strong> : <code>redo</code></p>
 </li>
+<li>
+<p><strong>Merge</strong> : <code>merge</code></p>
+</li>
 </ul>
 </div>
 </div>
@@ -535,7 +958,7 @@ e.g.<code>select 2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-09-21 15:57:58 +00:00
+Last updated 2017-11-06 17:14:24 +00:00
 </div>
 </div>
 </body>

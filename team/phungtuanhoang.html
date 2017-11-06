@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.3">
+<title>Phung Tuan Hoang - Project Portfolio</title>
+<link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Phung Tuan Hoang - Project Portfolio</h1>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="project-addressbook-level-4"><a class="link" href="#project-addressbook-level-4">Project: AddressBook - Level 4</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>AddressBook - Level 4 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 6 kLoC.</p>
+</div>
+<div class="paragraph">
+<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] {give links to collated code files}</p>
+</div>
+<div class="sect2">
+<h3 id="enhancement-added-export-all-contacts-to-a-code-txt-code-file"><a class="link" href="#enhancement-added-export-all-contacts-to-a-code-txt-code-file">Enhancement Added: Export all contacts to a <code>.txt</code> file</a></h3>
+<div class="sect3">
+<h4 id="external-behavior"><a class="link" href="#external-behavior">External behavior</a></h4>
+<hr>
+<div class="paragraph">
+<p><mark>Start of Extract [from: User Guide]</mark></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="adding-multiple-persons-code-multiple-code"><a class="link" href="#adding-multiple-persons-code-multiple-code">Adding multiple persons: <code>multiple</code></a></h3>
+<div class="paragraph">
+<p>Adds multiple persons to the address book from a given file path of a <code>.txt</code> file.<br>
+Default avatar folder: <code>./images/avatars</code><br>
+Format: <code>multiple FILE_PATH</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>multiple ./data/personsToAdd.txt</code></p>
+</li>
+<li>
+<p><code>multiple ./data/newStudentsToAdd.txt</code></p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/MultipleCommand/TypeMultipleCommand.png" alt="TypeMultipleCommand" width=""800">
+</div>
+</div>
+<div class="paragraph">
+<p>The message display box will display successful persons that are added.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/MultipleCommand/MultipleCommandSuccess.png" alt="MultipleCommandSuccess" width=""800">
+</div>
+</div>
+<div class="paragraph">
+<p>Person format in <code>.txt</code> file: <code>n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS i/AVATAR_FILE_PATH [t/TAG]&#8230;&#8203;</code></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The format in the <code>.txt</code> file is the same as <code>add</code> command except without the <code>add</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Example of <code>.txt</code> file:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 i/john_doe.png<br>
+n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 r/criminal<br>
+n/Mary Jane t/friend e/maryjane@example.com a/Mary drive p/4567123 r/pretty</p>
+</div>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Multiple command is an undoable/redoable command
+</td>
+</tr>
+</table>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/MultipleCommand/UndoCommandSuccessAfterMultiple.png" alt="UndoCommandSuccessAfterMultiple" width=""800">
+</div>
+</div>
+<div class="paragraph">
+<p><mark>End of Extract</mark></p>
+</div>
+<hr>
+<div class="sect3">
+<h4 id="justification"><a class="link" href="#justification">Justification</a></h4>
+<div class="paragraph">
+<p>When users are on the move and do not have access to the software, it is essential to have a physical copy of all the contacts. Exporting them to a <code>.txt</code> file would faciliate the process of printing.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="other-projects"><a class="link" href="#other-projects">Other projects</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="to-the-sky"><a class="link" href="#to-the-sky">To The Sky!</a></h3>
+<div class="paragraph">
+<p>To The Sky is an endless runner game in which the player must use his skills to dodge obstacles and collects valuable gems for as long as he can!</p>
+</div>
+<div class="imageblock" style="text-align: left">
+<div class="content">
+<img src="../images/tothesky.jpg" alt="tothesky" width="450">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2017-11-06 17:14:24 +00:00
+</div>
+</div>
+</body>
+</html>
