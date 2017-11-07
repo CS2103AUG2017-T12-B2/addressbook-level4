@@ -213,11 +213,13 @@ Format: <code>multiple FILE_PATH</code></p>
 </li>
 </ul>
 </div>
+<hr>
 <div class="imageblock">
 <div class="content">
 <img src="images/MultipleCommand/TypeMultipleCommand.png" alt="TypeMultipleCommand" width=""800">
 </div>
 </div>
+<hr>
 <div class="paragraph">
 <p>The message display box will display successful persons that are added.</p>
 </div>
@@ -226,6 +228,7 @@ Format: <code>multiple FILE_PATH</code></p>
 <img src="images/MultipleCommand/MultipleCommandSuccess.png" alt="MultipleCommandSuccess" width=""800">
 </div>
 </div>
+<hr>
 <div class="paragraph">
 <p>Person format in <code>.txt</code> file: <code>n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS i/AVATAR_FILE_PATH [t/TAG]&#8230;&#8203;</code></p>
 </div>
@@ -373,12 +376,25 @@ e.g. <code>r/friends family</code> will return persons with tags that match both
 <p>When finding name, only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
 </li>
 <li>
-<p>When finding email, any part of the email will be matched e.g. <code>mail</code> will match <code>@gmail.com</code> and <code>@hotmail.com</code></p>
+<p>When finding email, any part of the email will be matched with the character sequence of the input e.g. <code>mail</code> will match <code>@gmail.com</code> and <code>@hotmail.com</code></p>
+</li>
+<li>
+<p>When finding phone, any part of the phone will be matched with the character sequence of the input e.g. <code>123</code> will match <code>91234567</code> and <code>81234567</code></p>
+</li>
+<li>
+<p>When finding appointment, only date and time with correct format will be matched e.g. <code>10:30</code> will match all <code>10:30</code> appointments and <code>20/10/2017</code> will match all <code>20/10/2017</code> appointments</p>
+</li>
+<li>
+<p>When finding comment, only full words will be matched e.g. <code>swim</code> will not match <code>swims</code></p>
+</li>
+<li>
+<p>When finding address, any part of the address will be matched</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
+<hr>
 <div class="paragraph">
 <p>Searching for contacts with <code>friends</code> tag with the command <code>find r/friends</code>.</p>
 </div>
@@ -387,6 +403,7 @@ e.g. <code>r/friends family</code> will return persons with tags that match both
 <img src="images/FindCommand/TypeFindCommandOne.png" alt="TypeFindCommandOne" width="800">
 </div>
 </div>
+<hr>
 <div class="paragraph">
 <p>The result of <code>find r/friends</code> will show all contacts with <code>friends</code> tag.</p>
 </div>
@@ -395,6 +412,7 @@ e.g. <code>r/friends family</code> will return persons with tags that match both
 <img src="images/FindCommand/FindCommandSuccessListOne.png" alt="FindCommandSuccessListOne" width="800">
 </div>
 </div>
+<hr>
 <div class="paragraph">
 <p>Searching for contacts with <code>colleagues</code> and <code>friends</code> tags with the command <code>find r/colleagues friends</code>.</p>
 </div>
@@ -403,6 +421,7 @@ e.g. <code>r/friends family</code> will return persons with tags that match both
 <img src="images/FindCommand/TypeFindCommandTwo.png" alt="TypeFindCommandTwo" width="800">
 </div>
 </div>
+<hr>
 <div class="paragraph">
 <p>The result of <code>find r/colleagues friends</code> will show all contacts have both <code>colleagues</code> and <code>friends</code> tags.</p>
 </div>
@@ -411,6 +430,7 @@ e.g. <code>r/friends family</code> will return persons with tags that match both
 <img src="images/FindCommand/FindCommandSuccessTwo.png" alt="FindCommandSuccessTwo" width="800">
 </div>
 </div>
+<hr>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
@@ -440,6 +460,12 @@ Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>J
 <p><code>find n/Betsy Tim John r/friends e/@gmail.com</code><br>
 Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code>, any person with <code>friends</code> tag
 and any person whose email contain <code>@gmail.com</code></p>
+</li>
+<li>
+<p><code>find n/Betsy r/friends e/@gmail.com c/funny ap/10:30 a/clementi p/9123</code><br>
+Returns any person having names <code>Betsy</code>, any person with <code>friends</code> tag, any person whose email contain <code>@gmail.com</code>,
+any person whose comment have the word <code>funny</code> in it, any person who have <code>10:30</code> appointment, any person whose address contain <code>clementi</code>
+and any person whose phone number contain the sequence <code>9123</code></p>
 </li>
 </ul>
 </div>
@@ -805,11 +831,13 @@ Format: <code>merge NEW_FILE_PATH</code></p>
 </li>
 </ul>
 </div>
+<hr>
 <div class="imageblock">
 <div class="content">
 <img src="images/MergeCommand/TypeMergeCommand.png" alt="TypeMergeCommand" width="800">
 </div>
 </div>
+<hr>
 <div class="paragraph">
 <p>Unique persons that are successfully merge into the address book will appear in the person card list.</p>
 </div>
@@ -818,6 +846,7 @@ Format: <code>merge NEW_FILE_PATH</code></p>
 <img src="images/MergeCommand/MergeCommandSuccess.png" alt="MergeCommandSuccess" width="800">
 </div>
 </div>
+<hr>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -911,7 +940,7 @@ e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
 </li>
 <li>
 <p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
-e.g. <code>find James Jake</code></p>
+e.g. <code>find n/James Jake r/friends e/@gmail.com p/9123</code></p>
 </li>
 <li>
 <p><strong>Comment</strong> : <code>comment INDEX [c/COMMENT]</code><br>
@@ -949,7 +978,8 @@ e.g. <code>email_send "<a href="mailto:firstemail@gmail.com">firstemail@gmail.co
 <p><strong>Redo</strong> : <code>redo</code></p>
 </li>
 <li>
-<p><strong>Merge</strong> : <code>merge</code></p>
+<p><strong>Merge</strong> : <code>merge FILE_PATH</code><br>
+e.g. <code>merge data/newfile.xml</code></p>
 </li>
 </ul>
 </div>
@@ -958,7 +988,7 @@ e.g. <code>email_send "<a href="mailto:firstemail@gmail.com">firstemail@gmail.co
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-06 23:40:12 +00:00
+Last updated 2017-11-07 06:26:00 +00:00
 </div>
 </div>
 </body>
