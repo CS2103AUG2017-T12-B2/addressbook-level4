@@ -61,10 +61,49 @@ Format: <code>comment INDEX [c/COMMENT]</code></p>
 <ul>
 <li>
 <p><code>list</code><br>
-<code>comment 2 c/Likes to play computer games.</code><br>
-Selects the 2nd person in the address book and adds the above comment.</p>
+<code>comment 3 c/Likes to play computer games.</code><br>
+Selects the 3rd person in the address book and adds "Likes to play computer games." as comment.</p>
+</li>
+<li>
+<p><code>list</code><br>
+<code>comment 2 c/</code><br>
+Selects the 2nd person in the address book and removes its comment.
+'''
+Adding comment "Likes to play computer games." to 3rd contact.</p>
 </li>
 </ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/CommentCommand/01-2.png" alt="01 2" width="800">
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p>The result of <code>comment 3 c/Likes to play computer games.</code> shows the following:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/CommentCommand/02-2.png" alt="02 2" width="800">
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p>Removing comment from 4th contact.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/CommentCommand/03-1.png" alt="03 1" width="800">
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p>The result of <code>comment 4 c/</code> shows the following:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/CommentCommand/04-2.png" alt="04 2" width="800">
+</div>
 </div>
 <div class="paragraph">
 <p><mark>End of Extract</mark></p>
@@ -103,6 +142,9 @@ Format: <code>appoint INDEX [ap/APPOINT]</code></p>
 <li>
 <p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
 </li>
+<li>
+<p>The default date format follows the following: <code>DD/MM/YYYY HR:MN</code>. However, this format is not enforced and the user has freedom to select his/her own format.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -117,7 +159,46 @@ Format: <code>appoint INDEX [ap/APPOINT]</code></p>
 <code>appoint 2 ap/20/10/2017 14:45</code><br>
 Selects the 2nd person in the address book and assigns the above appointment slot.</p>
 </li>
+<li>
+<p><code>list</code><br>
+<code>appoint 4 ap/</code><br>
+Removes the appointment from the 4th contact.
+'''
+Adding appointment at <code>October 20th, 2017 14:45</code> to 2nd contact.</p>
+</li>
 </ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AppointCommand/05-1.png" alt="05 1" width="800">
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p>The result of <code>ppoint 2 ap/20/10/2017 14:45</code> shows the following:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AppointCommand/06-2.png" alt="06 2" width="800">
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p>Removing the appointment from 4th contact.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AppointCommand/07-1.png" alt="07 1" width="800">
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p>The result of <code>appoint 4 ap/</code> shows the following:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AppointCommand/08-2.png" alt="08 2" width="800">
+</div>
 </div>
 <div class="paragraph">
 <p><mark>End of Extract</mark></p>
@@ -135,7 +216,7 @@ Selects the 2nd person in the address book and assigns the above appointment slo
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-08 15:43:46 +00:00
+Last updated 2017-11-08 20:17:57 +00:00
 </div>
 </div>
 </body>
