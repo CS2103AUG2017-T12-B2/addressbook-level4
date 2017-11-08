@@ -35,20 +35,24 @@
 <li><a href="#listing-all-persons-code-list-code">2.6. Listing all persons : <code>list</code></a></li>
 <li><a href="#editing-a-person-code-edit-code">2.7. Editing a person : <code>edit</code></a></li>
 <li><a href="#locating-persons-by-keywords-code-find-code">2.8. Locating persons by keywords: <code>find</code></a></li>
-<li><a href="#deleting-a-person-code-delete-code">2.9. Deleting a person : <code>delete</code></a></li>
-<li><a href="#selecting-a-person-code-select-code">2.10. Selecting a person : <code>select</code></a></li>
-<li><a href="#commenting-about-a-person-code-comment-code">2.11. Commenting about a person : <code>comment</code></a></li>
-<li><a href="#making-appointment-for-a-person-code-appoint-code">2.12. Making Appointment for a person : <code>appoint</code></a></li>
-<li><a href="#login-using-gmail-or-yahoo-account-code-email_login-code">2.13. Login using Gmail or Yahoo Account: <code>email_login</code></a></li>
-<li><a href="#sending-an-email-to-a-list-of-recipients-code-email_send-code">2.14. Sending an email to a list of recipients: <code>email_send</code></a></li>
-<li><a href="#listing-entered-commands-code-history-code">2.15. Listing entered commands : <code>history</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code">2.16. Undoing previous command : <code>undo</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code">2.17. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#merging-given-file-to-default-storage-file-code-merge-code">2.18. Merging given file to default storage file : <code>merge</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">2.19. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">2.20. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">2.21. Saving the data</a></li>
-<li><a href="#selecting-an-application-theme">2.22. Selecting an application theme</a></li>
+<li><a href="#find-a-person-without-matching-the-whole-keyword-code-find_contain-code">2.9. Find a person without matching the whole keyword: <code>find_contain</code></a></li>
+<li><a href="#deleting-a-person-code-delete-code">2.10. Deleting a person : <code>delete</code></a></li>
+<li><a href="#selecting-a-person-code-select-code">2.11. Selecting a person : <code>select</code></a></li>
+<li><a href="#commenting-about-a-person-code-comment-code">2.12. Commenting about a person : <code>comment</code></a></li>
+<li><a href="#making-appointment-for-a-person-code-appoint-code">2.13. Making Appointment for a person : <code>appoint</code></a></li>
+<li><a href="#login-using-gmail-or-yahoo-account-code-email_login-code">2.14. Login using Gmail or Yahoo Account: <code>email_login</code></a></li>
+<li><a href="#sending-an-email-to-a-list-of-recipients-code-email_send-code">2.15. Sending an email to a list of recipients: <code>email_send</code></a></li>
+<li><a href="#listing-entered-commands-code-history-code">2.16. Listing entered commands : <code>history</code></a></li>
+<li><a href="#undoing-previous-command-code-undo-code">2.17. Undoing previous command : <code>undo</code></a></li>
+<li><a href="#redoing-the-previously-undone-command-code-redo-code">2.18. Redoing the previously undone command : <code>redo</code></a></li>
+<li><a href="#merging-given-file-to-default-storage-file-code-merge-code">2.19. Merging given file to default storage file : <code>merge</code></a></li>
+<li><a href="#clearing-all-entries-code-clear-code">2.20. Clearing all entries : <code>clear</code></a></li>
+<li><a href="#exiting-the-program-code-exit-code">2.21. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">2.22. Saving the data</a></li>
+<li><a href="#using-the-search-bar">2.23. Using the search bar</a></li>
+<li><a href="#using-the-email-login-button">2.24. Using the email login button</a></li>
+<li><a href="#using-the-email-send-button">2.25. Using the email send button</a></li>
+<li><a href="#selecting-an-application-theme">2.26. Selecting an application theme</a></li>
 </ul>
 </li>
 <li><a href="#faq">3. FAQ</a></li>
@@ -349,6 +353,18 @@ Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all 
 <p>Finds persons whose contain any of the given keywords.<br>
 Format: <code>find PREFIX_PERSON_ATTRIBUTE/KEYWORD [MORE_KEYWORDS]&#8230;&#8203; [MORE_PARAMETERS]&#8230;&#8203;</code></p>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Supported prefixes: <code>n/</code>, <code>p/</code>, <code>e/</code>, <code>a/</code>, <code>ap/</code>, <code>r/</code>, <code>c/</code>
+</td>
+</tr>
+</table>
+</div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
@@ -476,14 +492,39 @@ and any person whose phone number contain the sequence <code>9123</code></p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Find command currently support finding of name, email and tags.
+Find command currently support finding of name, email, phone, comment, address, appointment and tags.
 </td>
 </tr>
 </table>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-person-code-delete-code"><a class="link" href="#deleting-a-person-code-delete-code">2.9. Deleting a person : <code>delete</code></a></h3>
+<h3 id="find-a-person-without-matching-the-whole-keyword-code-find_contain-code"><a class="link" href="#find-a-person-without-matching-the-whole-keyword-code-find_contain-code">2.9. Find a person without matching the whole keyword: <code>find_contain</code></a></h3>
+<div class="paragraph">
+<p>Finds all persons whose name / phone / address / email contains the given string<br>
+Format: <code>find_contain PREFIX_PERSON_ATTRIBUTE/STRING [MORE_PARAMETERS]&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The search is an "AND" search.</p>
+</li>
+<li>
+<p>The characters that follow a prefix are treated as one string.</p>
+</li>
+<li>
+<p>A match happens when a person&#8217;s details contain the given strings
+e.g. "David Li" contains "avid", "93463991" contains "99".</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="deleting-a-person-code-delete-code"><a class="link" href="#deleting-a-person-code-delete-code">2.10. Deleting a person : <code>delete</code></a></h3>
 <div class="paragraph">
 <p>Deletes the specified person from the address book.<br>
 Format: <code>delete INDEX</code></p>
@@ -524,7 +565,7 @@ Deletes the 1st person in the results of the <code>find</code> command.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="selecting-a-person-code-select-code"><a class="link" href="#selecting-a-person-code-select-code">2.10. Selecting a person : <code>select</code></a></h3>
+<h3 id="selecting-a-person-code-select-code"><a class="link" href="#selecting-a-person-code-select-code">2.11. Selecting a person : <code>select</code></a></h3>
 <div class="paragraph">
 <p>Selects the person identified by the index number used in the last person listing.<br>
 Format: <code>select INDEX</code></p>
@@ -565,7 +606,7 @@ Selects the 1st person in the results of the <code>find</code> command.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="commenting-about-a-person-code-comment-code"><a class="link" href="#commenting-about-a-person-code-comment-code">2.11. Commenting about a person : <code>comment</code></a></h3>
+<h3 id="commenting-about-a-person-code-comment-code"><a class="link" href="#commenting-about-a-person-code-comment-code">2.12. Commenting about a person : <code>comment</code></a></h3>
 <div class="paragraph">
 <p>Adds a comment about a specific user.<br>
 Format: <code>comment INDEX [c/COMMENT]</code></p>
@@ -601,7 +642,7 @@ Selects the 2nd person in the address book and adds the above comment.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="making-appointment-for-a-person-code-appoint-code"><a class="link" href="#making-appointment-for-a-person-code-appoint-code">2.12. Making Appointment for a person : <code>appoint</code></a></h3>
+<h3 id="making-appointment-for-a-person-code-appoint-code"><a class="link" href="#making-appointment-for-a-person-code-appoint-code">2.13. Making Appointment for a person : <code>appoint</code></a></h3>
 <div class="paragraph">
 <p>Adds an appointment time slot for a specific user.<br>
 Format: <code>appoint INDEX [ap/APPOINT]</code></p>
@@ -637,7 +678,7 @@ Selects the 2nd person in the address book and assigns the above appointment slo
 </div>
 </div>
 <div class="sect2">
-<h3 id="login-using-gmail-or-yahoo-account-code-email_login-code"><a class="link" href="#login-using-gmail-or-yahoo-account-code-email_login-code">2.13. Login using Gmail or Yahoo Account: <code>email_login</code></a></h3>
+<h3 id="login-using-gmail-or-yahoo-account-code-email_login-code"><a class="link" href="#login-using-gmail-or-yahoo-account-code-email_login-code">2.14. Login using Gmail or Yahoo Account: <code>email_login</code></a></h3>
 <div class="paragraph">
 <p>Logs in with a Gmail or Yahoo account to allow sending emails<br>
 Format: <code>email_login "[EMAIL]" "[PASSWORD]"</code></p>
@@ -672,7 +713,7 @@ Format: <code>email_login "[EMAIL]" "[PASSWORD]"</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sending-an-email-to-a-list-of-recipients-code-email_send-code"><a class="link" href="#sending-an-email-to-a-list-of-recipients-code-email_send-code">2.14. Sending an email to a list of recipients: <code>email_send</code></a></h3>
+<h3 id="sending-an-email-to-a-list-of-recipients-code-email_send-code"><a class="link" href="#sending-an-email-to-a-list-of-recipients-code-email_send-code">2.15. Sending an email to a list of recipients: <code>email_send</code></a></h3>
 <div class="paragraph">
 <p>Sends an email to a list of recipients. Requires an logged in email using <code>email_login</code><br>
 Format: <code>email_send "[RECIPIENTS]" "[TITLE]" "[BODY]"</code></p>
@@ -715,7 +756,7 @@ send  an email with given title and body to a list of recipients.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">2.15. Listing entered commands : <code>history</code></a></h3>
+<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">2.16. Listing entered commands : <code>history</code></a></h3>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
 Format: <code>history</code></p>
@@ -736,7 +777,7 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">2.16. Undoing previous command : <code>undo</code></a></h3>
+<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">2.17. Undoing previous command : <code>undo</code></a></h3>
 <div class="paragraph">
 <p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
 Format: <code>undo</code></p>
@@ -781,7 +822,7 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </div>
 </div>
 <div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">2.17. Redoing the previously undone command : <code>redo</code></a></h3>
+<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">2.18. Redoing the previously undone command : <code>redo</code></a></h3>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
 Format: <code>redo</code></p>
@@ -813,7 +854,7 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect2">
-<h3 id="merging-given-file-to-default-storage-file-code-merge-code"><a class="link" href="#merging-given-file-to-default-storage-file-code-merge-code">2.18. Merging given file to default storage file : <code>merge</code></a></h3>
+<h3 id="merging-given-file-to-default-storage-file-code-merge-code"><a class="link" href="#merging-given-file-to-default-storage-file-code-merge-code">2.19. Merging given file to default storage file : <code>merge</code></a></h3>
 <div class="paragraph">
 <p>Merges the given <code>.xml</code> file to the default storage <code>.xml</code> file specified in <code>preferences.json</code>.<br>
 Format: <code>merge NEW_FILE_PATH</code></p>
@@ -866,28 +907,123 @@ Merge command is an undoable/redoable command
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">2.19. Clearing all entries : <code>clear</code></a></h3>
+<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">2.20. Clearing all entries : <code>clear</code></a></h3>
 <div class="paragraph">
 <p>Clears all entries from the address book.<br>
 Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">2.20. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">2.21. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">2.21. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">2.22. Saving the data</a></h3>
 <div class="paragraph">
 <p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="selecting-an-application-theme"><a class="link" href="#selecting-an-application-theme">2.22. Selecting an application theme</a></h3>
+<h3 id="using-the-search-bar"><a class="link" href="#using-the-search-bar">2.23. Using the search bar</a></h3>
+<div class="paragraph">
+<p>The search bar above the person panel shows any person whose name / phone / email / address contains the string typed in
+the search boxes (case-insensitive).</p>
+</div>
+<div class="paragraph">
+<p><strong>Interface of the search bar</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/search-bar.png" alt="search bar" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Examples</strong></p>
+</div>
+<hr>
+<div class="paragraph">
+<p>Typing "Li" in the name box returns any person whose name contains "li".</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/search-bar-li.png" alt="search bar li" width="800">
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p>Typing "david" in the name box and "9" in the phone box returns any person whose name contains "david" and phone number
+contains "9".</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/search-bar-david.png" alt="search bar david" width="800">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="using-the-email-login-button"><a class="link" href="#using-the-email-login-button">2.24. Using the email login button</a></h3>
+<div class="paragraph">
+<p>The login button is located under the search bar. Clicking on the login button opens a window for logging email.</p>
+</div>
+<div class="paragraph">
+<p><strong>The email login button</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/email-login-button.png" alt="email login button">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>The email login window</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/email-login-window.png" alt="email login window">
+</div>
+</div>
+<div class="paragraph">
+<p>Any feedback from an login activity will be displayed in the text area at the bottom of the login window, as well as in
+the console.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="using-the-email-send-button"><a class="link" href="#using-the-email-send-button">2.25. Using the email send button</a></h3>
+<div class="paragraph">
+<p>The send button is located under the search bar, next to the login button. It will only be available after an email is
+logged in. Clicking on the send button opens a window for sending email.</p>
+</div>
+<div class="paragraph">
+<p><strong>The email send button</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/email-send-button.png" alt="email send button">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>The email send window</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/email-send-window.png" alt="email send window">
+</div>
+</div>
+<div class="paragraph">
+<p>Selecting the check box at the far left of a person card will include his email in the "recipients" field when the send
+button is clicked.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/email-checkbox.png" alt="email checkbox">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="selecting-an-application-theme"><a class="link" href="#selecting-an-application-theme">2.26. Selecting an application theme</a></h3>
 <div class="paragraph">
 <p>From the top menu bar, select <code>Themes</code>, and then <code>Select Themes</code>.</p>
 </div>
@@ -988,7 +1124,7 @@ e.g. <code>merge data/newfile.xml</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-08 15:31:29 +00:00
+Last updated 2017-11-08 15:43:59 +00:00
 </div>
 </div>
 </body>
