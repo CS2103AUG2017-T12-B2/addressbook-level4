@@ -50,10 +50,13 @@
 <li><a href="#logging">3.3. Logging</a></li>
 <li><a href="#configuration">3.4. Configuration</a></li>
 <li><a href="#add-multiple-persons-feature">3.5. Add multiple persons feature</a></li>
-<li><a href="#theme-support">3.6. Theme Support</a></li>
-<li><a href="#commenting">3.7. Commenting</a></li>
-<li><a href="#making-appointments">3.8. Making Appointments</a></li>
-<li><a href="#merging-addressbook-data-file">3.9. Merging AddressBook data file</a></li>
+<li><a href="#search-bar-implementation">3.6. Search Bar implementation</a></li>
+<li><a href="#implemation-of-check-box-in-contact-card-for-sending-email-to-multiple-persons">3.7. Implemation of check box in contact card for sending email to multiple persons</a></li>
+<li><a href="#theme-support">3.8. Theme Support</a></li>
+<li><a href="#commenting">3.9. Commenting</a></li>
+<li><a href="#making-appointments">3.10. Making Appointments</a></li>
+<li><a href="#merging-addressbook-data-file">3.11. Merging AddressBook data file</a></li>
+<li><a href="#filter-mechanism-for-find-command">3.12. Filter mechanism for find command</a></li>
 </ul>
 </li>
 <li><a href="#documentation">4. Documentation</a>
@@ -942,7 +945,7 @@ The result of the parsed data is stored in an <code>ArrayList</code>, then it is
 <p>The user executes a new <code>AddMultipleCommand</code>, <code>multiple ./data/personsToAdd.txt</code>, to add a list of persons' particulars contained in <code>personsToAdd.txt</code>.</p>
 </div>
 <div class="paragraph">
-<p>After the parsing of inputs and construction of a new <code>AddMultipleCommand</code>, the <code>ArrayList</code>, <code>readOnlyPeople</code> will point to the <code>personsList</code> that was passed in from <code>AddMultipleCommandParser</code> while <code>ArrayList</code>, <code>toAdd</code> will contain <code>Person</code> that was constructed with <code>personsList</code>.
+<p>After the parsing of inputs and construction of a new <code>AddMultipleCommand</code>, the <code>ArrayList</code>, <code>readOnlyPeople</code> will point to the <code>personsList</code> that was passed in from <code>AddMultipleCommandParser</code>; while <code>ArrayList</code>, <code>toAdd</code> will contain <code>Person</code> that was constructed with <code>personsList</code>.
 The below is a graphical representation of two examples <code>ArrayList</code>.</p>
 </div>
 <div class="imageblock">
@@ -974,7 +977,86 @@ As such, no persons will be stored in the storage if the execution fails.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="theme-support"><a class="link" href="#theme-support">3.6. Theme Support</a></h3>
+<h3 id="search-bar-implementation"><a class="link" href="#search-bar-implementation">3.6. Search Bar implementation</a></h3>
+<div class="paragraph">
+<p>The Search Bar is a GUI feature that allows users to type into 5 text fields (for name / phone / address / email / tag)
+and filters those whose details contain the string in the respective text fields.</p>
+</div>
+<div class="paragraph">
+<p>Every text field in the Search Bar listens to changes and calls <code>onSearchBarChanged</code> if an input is detected. The <code>onSearchBarChanged</code> function then
+collates information in all 5 text fields and calls a <code>find_contain</code> command with the collated information.</p>
+</div>
+<div class="paragraph">
+<p><strong>Sequence diagram of Search Bar</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/search-bar-sequence.png" alt="search bar sequence">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>SearchBar.java</code> inherits from UIPart and therefore using <code>FXML</code> a function <code>onSearchBarChanged()</code> that is called every time a text field changes can be attached to each of the search field.</p>
+</li>
+<li>
+<p><code>onSearchBarChanged()</code> reads current texts in all search fields and builds a command input for <code>find_contain</code>.</p>
+</li>
+<li>
+<p>The command input is then passed to <code>LogicManager</code> and <code>AddressBookParser</code> then <code>FindContainCommandParser</code> respectively.</p>
+</li>
+<li>
+<p>As such, a new <code>find_contain</code> command is executed every time there is a change in the search bar. The <code>find_contain</code> passes a new <code>predicate</code> to the <code>ModelManager</code> to update the filtered person list.</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.6.1. Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Implementation of <code>SearchBar.java</code><br>
+<strong>Alternative 1 (current choice):</strong> Add a new <code>SearchBar</code> that inherits <code>UIPart</code><br>
+<strong>Pros:</strong> Very easy to find and filter desired contacts<br>
+<strong>Cons:</strong> Additional data structures that might cost more space.<br>
+<strong>Alternative 2:</strong> Just use the <code>find_contain</code> command<br>
+<strong>Pros:</strong> Uses entirely existing methods to implement.<br>
+<strong>Cons:</strong> Slow and time consuming for users.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="implemation-of-check-box-in-contact-card-for-sending-email-to-multiple-persons"><a class="link" href="#implemation-of-check-box-in-contact-card-for-sending-email-to-multiple-persons">3.7. Implemation of check box in contact card for sending email to multiple persons</a></h3>
+<div class="paragraph">
+<p>To the left of every contact card, there is a check box. When the email send window opens, the recipient field will automatically contain all ticked persons' emails.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/email-checkbox.png" alt="email checkbox">
+</div>
+</div>
+<div class="paragraph">
+<p>The ticked person cards&#8217;s references are stored in an <code>ArrayList</code> in <code>PersonListPanel.java</code>. The following sequence happens when a person card is ticked.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ticked-persons.png" alt="ticked persons">
+</div>
+</div>
+<div class="paragraph">
+<p>Also, a listener is added to the <code>ObservableList</code> containing the filtered persons to show in the panel. When a change in the <code>ObservableList</code> is listened, the <code>TickedPersons</code> <code>ArrayList</code> is reset.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>personList.addListener(new ListChangeListener&lt;ReadOnlyPerson&gt;() {
+            @Override
+            public void onChanged(Change&lt;? extends ReadOnlyPerson&gt; c) {
+                tickedPersons = new ArrayList&lt;PersonCard&gt;();
+            }
+        });</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="theme-support"><a class="link" href="#theme-support">3.8. Theme Support</a></h3>
 <div class="paragraph">
 <p>Theme support is implemented by leveraging the separation of styling from views since <code>css</code> files can be created by the end user, and imported into <code>fxml</code> views.<br></p>
 </div>
@@ -1026,7 +1108,7 @@ As such, no persons will be stored in the storage if the execution fails.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="commenting"><a class="link" href="#commenting">3.7. Commenting</a></h3>
+<h3 id="commenting"><a class="link" href="#commenting">3.9. Commenting</a></h3>
 <div class="paragraph">
 <p>The commenting feature was implemented as an end-to-end feature that touched upon all components.</p>
 </div>
@@ -1040,7 +1122,7 @@ As such, no persons will be stored in the storage if the execution fails.</p>
 6) implementing 'CommentCommand#execute()' in logic.</p>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">3.7.1. Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.9.1. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Implementation of <code>Comment</code><br>
 <strong>Alternative 1 (current choice):</strong> Simply create a new <code>Comment</code> Component<br>
@@ -1053,7 +1135,7 @@ As such, no persons will be stored in the storage if the execution fails.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="making-appointments"><a class="link" href="#making-appointments">3.8. Making Appointments</a></h3>
+<h3 id="making-appointments"><a class="link" href="#making-appointments">3.10. Making Appointments</a></h3>
 <div class="paragraph">
 <p>The appointment feature was implemented as an end-to-end feature that added modifications to all components.</p>
 </div>
@@ -1061,7 +1143,7 @@ As such, no persons will be stored in the storage if the execution fails.</p>
 <p>The implementation process consisted of first creating the appoint command which behaves just like the comment command, making the new command accept arguments, adding extra line in Person Card reserved for the appointment information, and implementing the Appoint Command execution in Logic.</p>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">3.8.1. Design Considerations</a></h4>
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.10.1. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Implementation of <code>Appoint</code><br>
 <strong>Alternative 1 (current choice):</strong> Simply create a new <code>Appoint</code> Component which behaves very similarly to the <code>Comment</code> feature<br>
@@ -1073,7 +1155,7 @@ As such, no persons will be stored in the storage if the execution fails.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="possible-improvements"><a class="link" href="#possible-improvements">3.8.2. Possible Improvements</a></h4>
+<h4 id="possible-improvements"><a class="link" href="#possible-improvements">3.10.2. Possible Improvements</a></h4>
 <div class="paragraph">
 <p>1) Further modify this feature so that every new appointment checks if the time clashes with any pre-existing appointments
 2) Make multiple appointments for one person
@@ -1082,7 +1164,7 @@ As such, no persons will be stored in the storage if the execution fails.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="merging-addressbook-data-file"><a class="link" href="#merging-addressbook-data-file">3.9. Merging AddressBook data file</a></h3>
+<h3 id="merging-addressbook-data-file"><a class="link" href="#merging-addressbook-data-file">3.11. Merging AddressBook data file</a></h3>
 <div class="paragraph">
 <p>The feature to merge a new address book data into the current address book default storage file (i.e. <code>addressBookFilePath</code> specified in <code>preferences.json</code>) is facilitated by <code>MergeCommand</code>.
 The <code>MergeCommand</code> extends <code>UndoableCommand</code> i.e. it execution method is <code>executeUndoableCommand</code>.</p>
@@ -1104,7 +1186,7 @@ While duplicated persons are ignored, unique persons will be added into the defa
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.9.1. Design Considerations</a></h4>
+<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">3.11.1. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Implementation of <code>MergeCommand</code><br>
 <strong>Alternative 1 (current choice):</strong> Utilizes the <code>ModelManager</code> 's <code>addPerson</code> method to merge new persons into the default data file<br>
@@ -1119,6 +1201,78 @@ While duplicated persons are ignored, unique persons will be added into the defa
 <strong>Alternative 4:</strong> Include <code>AddressBookStorage</code> as an attribute of <code>LogicManager</code><br>
 <strong>Pros:</strong> Allow <code>Storage</code> components to handle the merging of data.<br>
 <strong>Cons:</strong> Disrupt the design of <code>Logic</code> component.<br></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="filter-mechanism-for-find-command"><a class="link" href="#filter-mechanism-for-find-command">3.12. Filter mechanism for find command</a></h3>
+<div class="paragraph">
+<p>The feature to filter contacts stored in the address book is facilitated by both Logic and Model component.
+The <code>FindCommand</code> class contains <code>PersonContainsKeywordsPredicate</code> as an attribute. <code>PersonContainsKeywordsPredicate</code>
+implements <code>Predicate&lt;ReadOnlyPerson</code>, it has a <code>HashMap&lt;String, List&lt;String&gt;&gt;</code> with the person&#8217;s attributes prefix (e.g. <code>n/</code>) as the key
+and the keywords entered by the user as the value.</p>
+</div>
+<div class="paragraph">
+<p>Depending on the user input, the <code>FindCommandParser</code> will parse accordingly to the prefix present in the arguments.</p>
+</div>
+<div class="paragraph">
+<p>Below is a snippet of how the keywords are parsed:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="type">void</span> parseMultiMap(ArgumentMultimap argsMap, <span class="predefined-type">HashMap</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt;&gt; mapKeywords, Prefix prefix)
+            <span class="directive">throws</span> <span class="exception">ParseException</span> {
+        <span class="predefined-type">String</span> trimmedArgs;
+        <span class="keyword">try</span> {
+            <span class="keyword">if</span> (argsMap.getValue(prefix).isPresent()) {
+                trimmedArgs = ParserUtil.parseKeywords(argsMap.getValue(prefix)).get().trim();
+                <span class="keyword">if</span> (trimmedArgs.isEmpty()) {
+                    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">ParseException</span>(...);
+                }
+               ...
+            }
+        } ...
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After execution, <code>updateFilteredPersonList</code> will be called by the model and <code>PersonContainsKeywordsPredicate</code>
+will test if the user input keywords matches the respective attributes identified by the <code>HashMap</code> key.
+The filtered person list will be updated for display.</p>
+</div>
+<div class="paragraph">
+<p>Below is a snippet on name attribute test:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="type">boolean</span> checkPersonContainsNamePredicate(ReadOnlyPerson person) {
+        <span class="type">boolean</span> result = <span class="predefined-constant">false</span>;
+        <span class="keyword">if</span> (keywords.containsKey(PREFIX_NAME.toString()) &amp;&amp; !keywords.get(PREFIX_NAME.toString()).isEmpty()) {
+            result = keywords.get(PREFIX_NAME.toString()).stream()
+                    .anyMatch(keyword -&gt; StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword));
+        }
+        <span class="keyword">return</span> result;
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarize what happens when a user executes a find command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/FindCommandActivityDiagram.png" alt="FindCommandActivityDiagram" width="500">
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-8"><a class="link" href="#design-considerations-8">3.12.1. Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Data structure of <code>FindCommand</code><br>
+<strong>Alternative 1 (current choice):</strong> <code>PersonContainsKeywordsPredicate</code> which contains a <code>HashMap</code> as the underlying data structure<br>
+<strong>Pros:</strong> Easy to extend if new person attributes are needed to be filtered<br>
+<strong>Cons:</strong> Need users to enter the attribute prefix as the key <br>
+<strong>Alternative 2:</strong> <code>PersonContainsKeywordsPredicate</code> which contains a multiple <code>ArrayList</code> as the underlying data structure<br>
+<strong>Pros:</strong> Do not need a key to store the keywords<br>
+<strong>Cons:</strong> Need to create as many <code>ArrayList</code> as the number of person&#8217;s attributes is needed to be filtered.</p>
 </div>
 </div>
 </div>
@@ -2804,10 +2958,7 @@ for <code>RemarkCommandParser</code>.</p>
 <p>User requests to merge a given file to default storage file</p>
 </li>
 <li>
-<p>AddressBook merges the data of the two files</p>
-</li>
-<li>
-<p>AddressBook output the merged data file to a specified default path</p>
+<p>AddressBook merges the data of into the default storage file</p>
 </li>
 </ol>
 </div>
@@ -2868,13 +3019,13 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>3a. The merged data file does not exist</p>
+<p>2d. The default data file does not exist</p>
 <div class="ulist">
 <ul>
 <li>
-<p>3c1. AddressBook creates the file</p>
+<p>2d1. AddressBook creates the file</p>
 <div class="paragraph">
-<p>Use case resumes at step 3.</p>
+<p>Use case resumes at step 2.</p>
 </div>
 </li>
 </ul>
@@ -3028,7 +3179,7 @@ for <code>RemarkCommandParser</code>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-11 03:11:10 +00:00
+Last updated 2017-11-11 20:09:45 +00:00
 </div>
 </div>
 </body>

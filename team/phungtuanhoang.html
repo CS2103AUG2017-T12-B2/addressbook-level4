@@ -22,10 +22,13 @@
 <p>AddressBook - Level 4 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 6 kLoC.</p>
 </div>
 <div class="paragraph">
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] {give links to collated code files}</p>
+<p><strong>Code contributed</strong>: [<a href="https://github.com/phungtuanhoang1996/main/blob/master/collated/main/Hoang.md">Functional code</a>] [<a href="https://github.com/phungtuanhoang1996/main/blob/master/collated/test/Hoang.md">Test code</a>]</p>
 </div>
-<div class="sect2">
-<h3 id="enhancement-added-export-all-contacts-to-a-code-txt-code-file"><a class="link" href="#enhancement-added-export-all-contacts-to-a-code-txt-code-file">Enhancement Added: Export all contacts to a <code>.txt</code> file</a></h3>
+</div>
+</div>
+<div class="sect1">
+<h2 id="enhancement-added-export-all-contacts-to-a-code-txt-code-file"><a class="link" href="#enhancement-added-export-all-contacts-to-a-code-txt-code-file">Enhancement Added: Export all contacts to a <code>.txt</code> file</a></h2>
+<div class="sectionbody">
 <div class="sect3">
 <h4 id="external-behavior"><a class="link" href="#external-behavior">External behavior</a></h4>
 <hr>
@@ -33,86 +36,21 @@
 <p><mark>Start of Extract [from: User Guide]</mark></p>
 </div>
 </div>
-</div>
 <div class="sect2">
-<h3 id="adding-multiple-persons-code-multiple-code"><a class="link" href="#adding-multiple-persons-code-multiple-code">Adding multiple persons: <code>multiple</code></a></h3>
+<h3 id="export-code-export-code"><a class="link" href="#export-code-export-code">Export: <code>export</code></a></h3>
 <div class="paragraph">
-<p>Adds multiple persons to the address book from a given file path of a <code>.txt</code> file.<br>
-Default avatar folder: <code>./images/avatars</code><br>
-Format: <code>multiple FILE_PATH</code></p>
+<p>Exports the all contacts to a <code>.txt</code> file in a specified location.<br>
+Format: <code>export [FILETYPE] [PATH]</code><br></p>
 </div>
 <div class="paragraph">
-<p>Examples:</p>
+<p>Example:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>multiple ./data/personsToAdd.txt</code></p>
-</li>
-<li>
-<p><code>multiple ./data/newStudentsToAdd.txt</code></p>
+<p><code>export .txt C:/New Folder</code></p>
 </li>
 </ul>
-</div>
-<hr>
-<div class="imageblock">
-<div class="content">
-<img src="../images/MultipleCommand/TypeMultipleCommand.png" alt="TypeMultipleCommand" width=""800">
-</div>
-</div>
-<hr>
-<div class="paragraph">
-<p>The message display box will display successful persons that are added.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/MultipleCommand/MultipleCommandSuccess.png" alt="MultipleCommandSuccess" width=""800">
-</div>
-</div>
-<hr>
-<div class="paragraph">
-<p>Person format in <code>.txt</code> file: <code>n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS i/AVATAR_FILE_PATH [t/TAG]&#8230;&#8203;</code></p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The format in the <code>.txt</code> file is the same as <code>add</code> command except without the <code>add</code>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Example of <code>.txt</code> file:</p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="paragraph">
-<p>n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 i/john_doe.png<br>
-n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 r/criminal<br>
-n/Mary Jane t/friend e/maryjane@example.com a/Mary drive p/4567123 r/pretty</p>
-</div>
-</div>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Multiple command is an undoable/redoable command
-</td>
-</tr>
-</table>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/MultipleCommand/UndoCommandSuccessAfterMultiple.png" alt="UndoCommandSuccessAfterMultiple" width=""800">
-</div>
 </div>
 <div class="paragraph">
 <p><mark>End of Extract</mark></p>
@@ -123,6 +61,488 @@ Multiple command is an undoable/redoable command
 <div class="paragraph">
 <p>When users are on the move and do not have access to the software, it is essential to have a physical copy of all the contacts. Exporting them to a <code>.txt</code> file would faciliate the process of printing.</p>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="enhancement-added-login-with-an-email"><a class="link" href="#enhancement-added-login-with-an-email">Enhancement Added: Login with an email</a></h2>
+<div class="sectionbody">
+<div class="sect3">
+<h4 id="external-behavior-2"><a class="link" href="#external-behavior-2">External behavior</a></h4>
+<hr>
+<div class="paragraph">
+<p><mark>Start of Extract [from: User Guide]</mark></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="login-using-gmail-or-yahoo-account-code-email_login-code"><a class="link" href="#login-using-gmail-or-yahoo-account-code-email_login-code">Login using Gmail or Yahoo Account: <code>email_login</code></a></h3>
+<div class="paragraph">
+<p>Logs in with a Gmail or Yahoo account to allow sending emails<br>
+Format: <code>email_login "[EMAIL]" "[PASSWORD]"</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>"[EMAIL]"</code> is the email used to login. Example: <code>"<a href="mailto:cs2013testacc@gmail.com">cs2013testacc@gmail.com</a>"</code></p>
+</li>
+<li>
+<p><code>"[PASSWORD]"</code> is the passwor. Example: <code>"testpass"</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>email_login "<a href="mailto:cs2103testacc@gmail.com">cs2103testacc@gmail.com</a>" "testpass"</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><mark>End of Extract</mark></p>
+</div>
+<hr>
+</div>
+<div class="sect2">
+<h3 id="justification-2"><a class="link" href="#justification-2">Justification</a></h3>
+<div class="paragraph">
+<p>As the targeted users are tutors and businessmen, email functionality is required for information dissemination.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="enhancement-added-sending-email-with-a-logged-in-email"><a class="link" href="#enhancement-added-sending-email-with-a-logged-in-email">Enhancement Added: Sending email with a logged in email</a></h2>
+<div class="sectionbody">
+<div class="sect3">
+<h4 id="external-behavior-3"><a class="link" href="#external-behavior-3">External behavior</a></h4>
+<hr>
+<div class="paragraph">
+<p><mark>Start of Extract [from: User Guide]</mark></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sending-an-email-to-a-list-of-recipients-code-email_send-code"><a class="link" href="#sending-an-email-to-a-list-of-recipients-code-email_send-code">Sending an email to a list of recipients: <code>email_send</code></a></h3>
+<div class="paragraph">
+<p>Sends an email to a list of recipients. Requires an logged in email using <code>email_login</code><br>
+Format: <code>email_send "[RECIPIENTS]" "[TITLE]" "[BODY]"</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>"[RECIPIENTS]"</code> is the list of recipients, separated by <code>;</code>. Example: <code>"<a href="mailto:cs2103testacc@gmail.com">cs2103testacc@gmail.com</a>;<a href="mailto:cs2103test@yahoo.com">cs2103test@yahoo.com</a>"</code></p>
+</li>
+<li>
+<p><code>"[TITLE]"</code> is the title of the email. Example: <code>"Change of class schedule"</code></p>
+</li>
+<li>
+<p><code>"[BODY]"</code> is the body of the message. Example: <code>"The class schedule is changed to 4 pm"</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>email_send "<a href="mailto:cs2103testacc@gmail.com">cs2103testacc@gmail.com</a>" "Test Title" "Test Body"</code><br>
+send an email with given title and body to a single recipient.</p>
+</li>
+<li>
+<p><code>email_send "<a href="mailto:cs2103testacc@gmail.com">cs2103testacc@gmail.com</a>;<a href="mailto:cs2103testacc@yahoo.com">cs2103testacc@yahoo.com</a>" "Test Title" "Test Body"</code><br>
+send  an email with given title and body to a list of recipients.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><mark>End of Extract</mark></p>
+</div>
+<hr>
+</div>
+<div class="sect2">
+<h3 id="justification-3"><a class="link" href="#justification-3">Justification</a></h3>
+<div class="paragraph">
+<p>As the targeted users are tutors and businessmen, email functionality is required for information dissemination.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="enhancement-added-find-person-s-without-matching-the-whole-keyword"><a class="link" href="#enhancement-added-find-person-s-without-matching-the-whole-keyword">Enhancement Added: Find person(s) without matching the whole keyword</a></h2>
+<div class="sectionbody">
+<div class="sect3">
+<h4 id="external-behavior-4"><a class="link" href="#external-behavior-4">External behavior</a></h4>
+<hr>
+<div class="paragraph">
+<p><mark>Start of Extract [from: User Guide]</mark></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="find-a-person-without-matching-the-whole-keyword-code-find_contain-code"><a class="link" href="#find-a-person-without-matching-the-whole-keyword-code-find_contain-code">Find a person without matching the whole keyword: <code>find_contain</code></a></h3>
+<div class="paragraph">
+<p>Finds all persons whose name / phone / address / email contains the given string<br>
+Format: <code>find_contain PREFIX_PERSON_ATTRIBUTE/STRING [MORE_PARAMETERS]&#8230;&#8203;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The search is an "AND" search.</p>
+</li>
+<li>
+<p>The characters that follow a prefix are treated as one string.</p>
+</li>
+<li>
+<p>A match happens when a person&#8217;s details contain the given strings
+e.g. "David Li" contains "avid", "93463991" contains "99".</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p><mark>End of Extract</mark></p>
+</div>
+<hr>
+</div>
+<div class="sect2">
+<h3 id="justification-4"><a class="link" href="#justification-4">Justification</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>find</code> command is an OR search, therefore if users want to filter out unwanted contacts by giving more information,
+an AND search (<code>find_contain</code>) will be required.</p>
+</li>
+<li>
+<p>For the search bar UI enhancement, search without matching the whole keyword is more desirable (for example: typing <code>ale</code>
+will immediately show all <code>Alex</code>, thus saving time.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="enhancement-added-user-interface-overhaul"><a class="link" href="#enhancement-added-user-interface-overhaul">Enhancement Added: User Interface overhaul</a></h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Dark Theme</strong></p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/DarkTheme.png" alt="DarkTheme" width="450">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Light Theme</strong></p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/LightTheme.png" alt="LightTheme" width="450">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="new-feature-added-search-bar"><a class="link" href="#new-feature-added-search-bar">New Feature Added: Search Bar</a></h2>
+<div class="sectionbody">
+<div class="sect3">
+<h4 id="external-behavior-5"><a class="link" href="#external-behavior-5">External behavior</a></h4>
+<hr>
+<div class="paragraph">
+<p><mark>Start of Extract [from: User Guide]</mark></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="using-the-search-bar"><a class="link" href="#using-the-search-bar">Using the search bar</a></h3>
+<div class="paragraph">
+<p>The search bar above the person panel shows any person whose name / phone / email / address contains the string typed in
+the search boxes (case-insensitive).</p>
+</div>
+<div class="paragraph">
+<p><strong>Interface of the search bar</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/search-bar.png" alt="search bar" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Examples</strong></p>
+</div>
+<hr>
+<div class="paragraph">
+<p>Typing "Li" in the name box returns any person whose name contains "li".</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/search-bar-li.png" alt="search bar li" width="800">
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p>Typing "david" in the name box and "9" in the phone box returns any person whose name contains "david" and phone number
+contains "9".</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/search-bar-david.png" alt="search bar david" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p><mark>End of Extract</mark></p>
+</div>
+<div class="sect3">
+<h4 id="developer-guide"><a class="link" href="#developer-guide">Developer Guide</a></h4>
+<hr>
+<div class="paragraph">
+<p><mark>Start of Extract [from: Developer Guide]</mark></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="search-bar-implementation"><a class="link" href="#search-bar-implementation">Search Bar implementation</a></h3>
+<div class="paragraph">
+<p>The Search Bar is a GUI feature that allows users to type into 5 text fields (for name / phone / address / email / tag)
+and filters those whose details contain the string in the respective text fields.</p>
+</div>
+<div class="paragraph">
+<p>Every text field in the Search Bar listens to changes and calls <code>onSearchBarChanged</code> if an input is detected. The <code>onSearchBarChanged</code> function then
+collates information in all 5 text fields and calls a <code>find_contain</code> command with the collated information.</p>
+</div>
+<div class="paragraph">
+<p><strong>Sequence diagram of Search Bar</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/search-bar-sequence.png" alt="search bar sequence">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>SearchBar.java</code> inherits from UIPart and therefore using <code>FXML</code> a function <code>onSearchBarChanged()</code> that is called every time a text field changes can be attached to each of the search field.</p>
+</li>
+<li>
+<p><code>onSearchBarChanged()</code> reads current texts in all search fields and builds a command input for <code>find_contain</code>.</p>
+</li>
+<li>
+<p>The command input is then passed to <code>LogicManager</code> and <code>AddressBookParser</code> then <code>FindContainCommandParser</code> respectively.</p>
+</li>
+<li>
+<p>As such, a new <code>find_contain</code> command is executed every time there is a change in the search bar. The <code>find_contain</code> passes a new <code>predicate</code> to the <code>ModelManager</code> to update the filtered person list.</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Implementation of <code>SearchBar.java</code><br>
+<strong>Alternative 1 (current choice):</strong> Add a new <code>SearchBar</code> that inherits <code>UIPart</code><br>
+<strong>Pros:</strong> Very easy to find and filter desired contacts<br>
+<strong>Cons:</strong> Additional data structures that might cost more space.<br>
+<strong>Alternative 2:</strong> Just use the <code>find_contain</code> command<br>
+<strong>Pros:</strong> Uses entirely existing methods to implement.<br>
+<strong>Cons:</strong> Slow and time consuming for users.</p>
+</div>
+<div class="paragraph">
+<p><mark>End of Extract</mark></p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="justification-5"><a class="link" href="#justification-5">Justification</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Sometimes users need to quickly find a person and the search bar provides a quicker way than command line.</p>
+</li>
+<li>
+<p>Users sometimes forget contacts' details: for example, users call a person "Dave" but do not remember whether he saved
+the contact as "David" or "Dave". Search Bar solves this problem by allowing users to just type "dav" in the name field
+rather than use the <code>find</code> command twice for "dave" and "david".</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="new-feature-added-email-login-window-and-email-send-window-enhancement-added-checkboxes-for-contact-panel-to-allow-sending-to-multiple-contacts"><a class="link" href="#new-feature-added-email-login-window-and-email-send-window-enhancement-added-checkboxes-for-contact-panel-to-allow-sending-to-multiple-contacts">New Feature Added: Email Login window and Email Send window / Enhancement Added: Checkboxes for Contact Panel to allow sending to multiple contacts</a></h2>
+<div class="sectionbody">
+<div class="sect3">
+<h4 id="external-behavior-6"><a class="link" href="#external-behavior-6">External behavior</a></h4>
+<hr>
+<div class="paragraph">
+<p><mark>Start of Extract [from: User Guide]</mark></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="using-the-email-login-button"><a class="link" href="#using-the-email-login-button">Using the email login button</a></h3>
+<div class="paragraph">
+<p>The login button is located under the search bar. Clicking on the login button opens a window for logging email.</p>
+</div>
+<div class="paragraph">
+<p><strong>The email login button</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/email-login-button.png" alt="email login button">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>The email login window</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/email-login-window.png" alt="email login window">
+</div>
+</div>
+<div class="paragraph">
+<p>Any feedback from an login activity will be displayed in the text area at the bottom of the login window, as well as in
+the console.</p>
+</div>
+<div class="paragraph">
+<p><mark>End of Extract</mark></p>
+</div>
+<hr>
+<div class="paragraph">
+<p><mark>Start of Extract [from: User Guide]</mark></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="using-the-email-send-button"><a class="link" href="#using-the-email-send-button">Using the email send button</a></h3>
+<div class="paragraph">
+<p>The send button is located under the search bar, next to the login button. It will only be available after an email is
+logged in. Clicking on the send button opens a window for sending email.</p>
+</div>
+<div class="paragraph">
+<p><strong>The email send button</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/email-send-button.png" alt="email send button">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>The email send window</strong></p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/email-send-window.png" alt="email send window">
+</div>
+</div>
+<div class="paragraph">
+<p>Selecting the check box at the far left of a person card will include his email in the "recipients" field when the send
+button is clicked.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/email-checkbox.png" alt="email checkbox">
+</div>
+</div>
+<div class="paragraph">
+<p><mark>End of Extract</mark></p>
+</div>
+<hr>
+<div class="paragraph">
+<p><mark>Start of Extract [from: Developer Guide]</mark></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="email-component"><a class="link" href="#email-component">Email Component</a></h3>
+<div class="paragraph">
+<p>The email component ultilised the external library <code>javax.mail</code> for sending and receiving emails.</p>
+</div>
+<div class="paragraph">
+<p>The <code>EmailManager.java</code> class implementing <code>Email</code> manages the login status by keeping an <code>Autheticator</code> object along with its email <code>String</code>.</p>
+</div>
+<div class="paragraph">
+<p>As the library <code>javax.mail</code> uses <code>IMAP</code> protocol for receving emails and <code>SMTP</code> for sending emails, the <code>EmailManager</code> also holds a <code>Hashtable</code> of <code>IMAP</code> hosts and <code>SMTP</code> hosts / ports for different email providers. This allows future support for more providers.</p>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Implementation of <code>Email</code><br>
+<strong>Alternative 1 (current choice):</strong> Create a new <code>Email</code> Component<br>
+<strong>Pros:</strong> Can be further improved to work with other commands to quickly send emails to a group of people<br>
+<strong>Cons:</strong> Command line interface is not user friendly<br>
+<strong>Alternative 2:</strong> Use the built in browser to send emails<br>
+<strong>Pros:</strong> Already has the GUI which is user friendly, support for all email providers<br>
+<strong>Cons:</strong> However, it will be more difficult to work with other commands to send to a specific groups of contacts.</p>
+</div>
+<div class="paragraph">
+<p><mark>End of Extract</mark></p>
+</div>
+<hr>
+<div class="paragraph">
+<p><mark>Start of Extract [from: Developer Guide]</mark></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="implemation-of-check-box-in-contact-card-for-sending-email-to-multiple-persons"><a class="link" href="#implemation-of-check-box-in-contact-card-for-sending-email-to-multiple-persons">Implemation of check box in contact card for sending email to multiple persons</a></h3>
+<div class="paragraph">
+<p>To the left of every contact card, there is a check box. When the email send window opens, the recipient field will automatically contain all ticked persons' emails.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/email-checkbox.png" alt="email checkbox">
+</div>
+</div>
+<div class="paragraph">
+<p>The ticked person cards&#8217;s references are stored in an <code>ArrayList</code> in <code>PersonListPanel.java</code>. The following sequence happens when a person card is ticked.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ticked-persons.png" alt="ticked persons">
+</div>
+</div>
+<div class="paragraph">
+<p>Also, a listener is added to the <code>ObservableList</code> containing the filtered persons to show in the panel. When a change in the <code>ObservableList</code> is listened, the <code>TickedPersons</code> <code>ArrayList</code> is reset.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>personList.addListener(new ListChangeListener&lt;ReadOnlyPerson&gt;() {
+            @Override
+            public void onChanged(Change&lt;? extends ReadOnlyPerson&gt; c) {
+                tickedPersons = new ArrayList&lt;PersonCard&gt;();
+            }
+        });</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><mark>End of Extract</mark></p>
 </div>
 </div>
 </div>
@@ -146,7 +566,7 @@ Multiple command is an undoable/redoable command
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-11 03:11:10 +00:00
+Last updated 2017-11-11 20:09:45 +00:00
 </div>
 </div>
 </body>
