@@ -16,10 +16,10 @@
 </div>
 <div id="content">
 <div class="sect1">
-<h2 id="project-addressbook-level-4"><a class="link" href="#project-addressbook-level-4">Project: AddressBook - Level 4</a></h2>
+<h2 id="project-blast"><a class="link" href="#project-blast">Project: Blast!</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AddressBook - Level 4 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 6 kLoC.</p>
+<p>Blast! is a desktop address book application developed with tutors and sales persons in mind The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and more than 6 kLoC.</p>
 </div>
 <div class="paragraph">
 <p><strong>Code contributed</strong>: [<a href="https://github.com/KhorSL/main">Functional code</a>] [<a href="https://github.com/KhorSL/main">Test code</a>]</p>
@@ -118,6 +118,104 @@ Multiple command is an undoable/redoable command
 <p><mark>End of Extract</mark></p>
 </div>
 <hr>
+<div class="sect3">
+<h4 id="internal-behaviour"><a class="link" href="#internal-behaviour">Internal Behaviour</a></h4>
+<hr>
+<div class="paragraph">
+<p><mark>Start of Extract [from: Developer Guide]</mark></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="add-multiple-persons-feature"><a class="link" href="#add-multiple-persons-feature">Add multiple persons feature</a></h3>
+<div class="paragraph">
+<p>The feature to add multiple persons is facilitated by <code>AddMultipleCommand</code> which is a command that extends <code>UndoableCommand</code> i.e. <code>AddMultipleCommand</code> execution method is <code>executeUndoableCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>AddMultipleCommand</code> adds new persons in a similar fashion with the existing <code>AddCommand</code>. Both uses the method, <code>addPerson</code>, of the model to add a given person. Furthermore, both commands parses the persons particulars similarly.</p>
+</div>
+<div class="paragraph">
+<p>Nevertheless, there are subtle differences between <code>AddMultipleCommand</code> and <code>AddCommand</code>. Below are characteristics that pertains to <code>AddMultipleCommand</code>:</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The <code>AddMultipleCommand</code> parses persons' particulars from data of a <code>.txt</code> file instead of user argument inputs.</p>
+</li>
+<li>
+<p>The <code>AddMultipleCommand</code> user argument inputs is a file name of the file that contains persons' particulars.</p>
+</li>
+<li>
+<p>The <code>AddMultipleCommand</code> is an independent command by itself i.e. calling undo/redo will undo/redo the entire data that was changed in the storage e.g. <code>Bob</code>, <code>Tom</code> and <code>Kat</code> was added, undoing will remove <code>Bob</code>, <code>Tom</code> and <code>Kat</code>.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the add multiple persons operation works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AddMultipleCommandSequenceDiagram.png" alt="AddMultipleCommandSequenceDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Parsing of persons' particulars</strong></p>
+</div>
+<div class="paragraph">
+<p>The <code>AddMultipleCommandParser</code> implements <code>Parser</code>, and it handles the parsing of user input file path and the data that contains in the <code>.txt</code> file.</p>
+</div>
+<div class="paragraph">
+<p>As shown in the sequence diagram above, <code>AddMultipleCommandParser</code> utilizes the FileUtil to retrieve the data as a String from the <code>.txt</code> file. The retrieved data is then transformed to be stored in an array split by <code>System.lineSeparator()</code> to be parsed based on each line.
+The result of the parsed data is stored in an <code>ArrayList</code>, then it is returned with the construction of <code>AddMultipleCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Implementation as an independent Undoable/Redoable command</strong></p>
+</div>
+<div class="paragraph">
+<p>The <code>AddMultipleCommand</code> contains two <code>ArrayList</code>; One <code>Person</code> array list to facilitate adding new persons and one <code>ReadOnlyPerson</code> array list to facilitate deletion of persons in the event of unexpected result that requires the command to roll back.</p>
+</div>
+<div class="paragraph">
+<p>The user executes a new <code>AddMultipleCommand</code>, <code>multiple ./data/personsToAdd.txt</code>, to add a list of persons' particulars contained in <code>personsToAdd.txt</code>.</p>
+</div>
+<div class="paragraph">
+<p>After the parsing of inputs and construction of a new <code>AddMultipleCommand</code>, the <code>ArrayList</code>, <code>readOnlyPeople</code> will point to the <code>personsList</code> that was passed in from <code>AddMultipleCommandParser</code>; while <code>ArrayList</code>, <code>toAdd</code> will contain <code>Person</code> that was constructed with <code>personsList</code>.
+The below is a graphical representation of two examples <code>ArrayList</code>.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AddMultipleCommandInitializationDiagram.png" alt="AddMultipleCommandInitializationDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>A variable <code>numberOfPersonsAdded</code> is used to keep track of <code>Person</code> added sequentially to the storage from <code>toAdd</code>.
+In the event when an error occur, a loop is initiated to delete the <code>ReadOnlyPerson</code> that contain in <code>readOnlyPeople</code> sequentially; the number of times the loop runs is based on <code>numberOfPersonsAdded</code>.
+As such, no persons will be stored in the storage if the execution fails.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AddMultipleCommandExecutionErrorDiagram.png" alt="AddMultipleCommandExecutionErrorDiagram" width="800">
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Implementation of <code>AddMultipleCommand</code><br>
+<strong>Alternative 1 (current choice):</strong> Add a new command <code>AddMultipleCommand</code><br>
+<strong>Pros:</strong> Flexibility in using other data structures to store person data that will be added.<br>
+<strong>Cons:</strong> Additional data structures that might cost more space.<br>
+<strong>Alternative 2:</strong> Enhance the current <code>AddCommand</code><br>
+<strong>Pros:</strong> Uses almost entirely existing methods to implement.<br>
+<strong>Cons:</strong> Restrictive data structure that do not support adding multiple persons.</p>
+</div>
+<div class="paragraph">
+<p><mark>End of Extract</mark>
+---</p>
+</div>
+</div>
 <div class="sect3">
 <h4 id="justification"><a class="link" href="#justification">Justification</a></h4>
 <div class="paragraph">
@@ -292,6 +390,89 @@ Find command currently support finding of name, email, phone, comment, address, 
 </div>
 <hr>
 <div class="sect3">
+<h4 id="internal-behavior"><a class="link" href="#internal-behavior">Internal behavior</a></h4>
+<hr>
+<div class="paragraph">
+<p><mark>Start of Extract [from: Developer Guide]</mark></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="filter-mechanism-for-find-command"><a class="link" href="#filter-mechanism-for-find-command">Filter mechanism for find command</a></h3>
+<div class="paragraph">
+<p>The feature to filter contacts stored in the address book is facilitated by both Logic and Model component.
+The <code>FindCommand</code> class contains <code>PersonContainsKeywordsPredicate</code> as an attribute. <code>PersonContainsKeywordsPredicate</code>
+implements <code>Predicate&lt;ReadOnlyPerson</code>, it has a <code>HashMap&lt;String, List&lt;String&gt;&gt;</code> with the person&#8217;s attributes prefix (e.g. <code>n/</code>) as the key
+and the keywords entered by the user as the value.</p>
+</div>
+<div class="paragraph">
+<p>Depending on the user input, the <code>FindCommandParser</code> will parse accordingly to the prefix present in the arguments.</p>
+</div>
+<div class="paragraph">
+<p>Below is a snippet of how the keywords are parsed:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="type">void</span> parseMultiMap(ArgumentMultimap argsMap, <span class="predefined-type">HashMap</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt;&gt; mapKeywords, Prefix prefix)
+            <span class="directive">throws</span> <span class="exception">ParseException</span> {
+        <span class="predefined-type">String</span> trimmedArgs;
+        <span class="keyword">try</span> {
+            <span class="keyword">if</span> (argsMap.getValue(prefix).isPresent()) {
+                trimmedArgs = ParserUtil.parseKeywords(argsMap.getValue(prefix)).get().trim();
+                <span class="keyword">if</span> (trimmedArgs.isEmpty()) {
+                    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">ParseException</span>(...);
+                }
+               ...
+            }
+        } ...
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After execution, <code>updateFilteredPersonList</code> will be called by the model and <code>PersonContainsKeywordsPredicate</code>
+will test if the user input keywords matches the respective attributes identified by the <code>HashMap</code> key.
+The filtered person list will be updated for display.</p>
+</div>
+<div class="paragraph">
+<p>Below is a snippet on name attribute test:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="type">boolean</span> checkPersonContainsNamePredicate(ReadOnlyPerson person) {
+        <span class="type">boolean</span> result = <span class="predefined-constant">false</span>;
+        <span class="keyword">if</span> (keywords.containsKey(PREFIX_NAME.toString()) &amp;&amp; !keywords.get(PREFIX_NAME.toString()).isEmpty()) {
+            result = keywords.get(PREFIX_NAME.toString()).stream()
+                    .anyMatch(keyword -&gt; StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword));
+        }
+        <span class="keyword">return</span> result;
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following activity diagram summarize what happens when a user executes a find command:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/FindCommandActivityDiagram.png" alt="FindCommandActivityDiagram" width="500">
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Data structure of <code>FindCommand</code><br>
+<strong>Alternative 1 (current choice):</strong> <code>PersonContainsKeywordsPredicate</code> which contains a <code>HashMap</code> as the underlying data structure<br>
+<strong>Pros:</strong> Easy to extend if new person attributes are needed to be filtered<br>
+<strong>Cons:</strong> Need users to enter the attribute prefix as the key <br>
+<strong>Alternative 2:</strong> <code>PersonContainsKeywordsPredicate</code> which contains a multiple <code>ArrayList</code> as the underlying data structure<br>
+<strong>Pros:</strong> Do not need a key to store the keywords<br>
+<strong>Cons:</strong> Need to create as many <code>ArrayList</code> as the number of person&#8217;s attributes is needed to be filtered.</p>
+</div>
+<div class="paragraph">
+<p><mark>End of Extract</mark></p>
+</div>
+<hr>
+</div>
+<div class="sect3">
 <h4 id="justification-2"><a class="link" href="#justification-2">Justification</a></h4>
 <div class="paragraph">
 <p>Allowing users to find persons based on tags will allow users to know the relationship with their contact.</p>
@@ -365,6 +546,58 @@ Merge command is an undoable/redoable command
 </div>
 <hr>
 <div class="sect3">
+<h4 id="internal-behavior-2"><a class="link" href="#internal-behavior-2">Internal behavior</a></h4>
+<hr>
+<div class="paragraph">
+<p><mark>Start of Extract [from: Developer Guide]</mark></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="merging-addressbook-data-file"><a class="link" href="#merging-addressbook-data-file">Merging AddressBook data file</a></h3>
+<div class="paragraph">
+<p>The feature to merge a new address book data into the current address book default storage file (i.e. <code>addressBookFilePath</code> specified in <code>preferences.json</code>) is facilitated by <code>MergeCommand</code>.
+The <code>MergeCommand</code> extends <code>UndoableCommand</code> i.e. it execution method is <code>executeUndoableCommand</code>.</p>
+</div>
+<div class="paragraph">
+<p>When the command is executed, the data of the new file is loaded with XmlFileStorage then it is transformed to <code>Observable&lt;ReadOnlyPerson&gt;</code>.
+Thereafter, the model will merge the person in <code>Observable&lt;ReadOnlyPerson&gt;</code> list with the default data.</p>
+</div>
+<div class="paragraph">
+<p>In the merging process the model will compare the data (i.e. persons contain inside the <code>UniquePersonsList</code>) in <code>addressBook</code> with the <code>ReadOnlyPerson</code> object.
+While duplicated persons are ignored, unique persons will be added into the default data storage with the <code>ModelManager</code> 's <code>addPerson(ReadOnlyPerson)</code> method.</p>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the merge operation works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/MergeCommandSequenceDiagram.png" alt="MergeCommandSequenceDiagram" width="800">
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Implementation of <code>MergeCommand</code><br>
+<strong>Alternative 1 (current choice):</strong> Utilizes the <code>ModelManager</code> 's <code>addPerson</code> method to merge new persons into the default data file<br>
+<strong>Pros:</strong> Retain the current design of <code>Model</code> component without adding new attributes in <code>ModelManager</code> .<br>
+<strong>Cons:</strong> When the new file to merge contain large amount unique persons that can be merged, the <code>Logger</code> will log a large number of person added during the merge.<br>
+<strong>Alternative 2:</strong> Using the <code>EventsCenter</code> in <code>MergeCommand</code> to post and event to allow the storage to handle the request<br>
+<strong>Pros:</strong> Allow <code>Storage</code> components to handle the merging of data.<br>
+<strong>Cons:</strong> Hard to catch unexpected exceptions as <code>EventsCenter</code> 's <code>post</code> method do not throw exceptions.
+<strong>Alternative 3:</strong> Include <code>AddressBookStorage</code> as an attribute of <code>ModelManager</code><br>
+<strong>Pros:</strong> Allow <code>Storage</code> components to handle the merging of data.<br>
+<strong>Cons:</strong> Tighter coupling as now <code>AddressBookStorage</code> is associated with <code>ModelManager</code> .<br>
+<strong>Alternative 4:</strong> Include <code>AddressBookStorage</code> as an attribute of <code>LogicManager</code><br>
+<strong>Pros:</strong> Allow <code>Storage</code> components to handle the merging of data.<br>
+<strong>Cons:</strong> Disrupt the design of <code>Logic</code> component.<br></p>
+</div>
+<div class="paragraph">
+<p><mark>End of Extract</mark></p>
+</div>
+<hr>
+</div>
+<div class="sect3">
 <h4 id="justification-3"><a class="link" href="#justification-3">Justification</a></h4>
 <div class="paragraph">
 <p>Main tutors with many assistant tutors is able to merge the different address book of my assistant tutors
@@ -385,7 +618,7 @@ so as to have all the student contacts.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-12 18:52:10 +00:00
+Last updated 2017-11-12 19:04:16 +00:00
 </div>
 </div>
 </body>
