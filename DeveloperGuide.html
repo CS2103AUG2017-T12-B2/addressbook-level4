@@ -1142,6 +1142,9 @@ collates information in all 5 text fields and calls a <code>find_contain</code> 
 <div class="paragraph">
 <p>The implementation process consisted of first creating the appoint command which behaves just like the comment command, making the new command accept arguments, adding extra line in Person Card reserved for the appointment information, and implementing the Appoint Command execution in Logic.</p>
 </div>
+<div class="paragraph">
+<p>An improvement to the Appointment feature have been added so that it catches any invalid date inputs that occur before the current time of usage, as there is no point making an appointment in the past. This was implemented by using the Calendar and Date libraries in Java.</p>
+</div>
 <div class="sect3">
 <h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">3.10.1. Design Considerations</a></h4>
 <div class="paragraph">
@@ -3179,7 +3182,7 @@ for <code>RemarkCommandParser</code>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-12 19:04:16 +00:00
+Last updated 2017-11-12 19:08:04 +00:00
 </div>
 </div>
 </body>
