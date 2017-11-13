@@ -1,5 +1,5 @@
 # KhorSL
-###### \java\seedu\address\commons\util\StringUtilTest.java
+###### /java/seedu/address/commons/util/StringUtilTest.java
 ``` java
     //---------------- Tests for containsWordIgnoreCaseAndCharacters --------------------------------------
 
@@ -289,6 +289,9 @@
         ArrayList<String> expectedSingleDateList = new ArrayList<>();
         expectedSingleDateList.add("20/10/2017");
 
+        ArrayList<String> expectedLeapYearDateList = new ArrayList<>();
+        expectedLeapYearDateList.add("29/02/2016");
+
         ArrayList<String> expectedMultipleDatesList1 = new ArrayList<>();
         expectedMultipleDatesList1.add("20/10/2017");
         expectedMultipleDatesList1.add("20/10/2018");
@@ -306,6 +309,11 @@
         assertCorrectDateResult("20/10/17", new ArrayList<>());
         assertCorrectDateResult("01/13/2017", new ArrayList<>()); // date wrong format with mm/dd/yyyy
         assertCorrectDateResult("01-01-2017", new ArrayList<>()); // date dd-mm-yyyy
+
+        // leap years (boundary case)
+        assertCorrectDateResult("29/02/2017", new ArrayList<>());
+        assertCorrectDateResult("31/02/2016", new ArrayList<>());
+        assertCorrectDateResult("29/02/2016", expectedLeapYearDateList);
 
         // single date
         assertCorrectDateResult("20/10/2017", expectedSingleDateList);
@@ -392,7 +400,7 @@
         assertTrue(actual.equals(expected));
     }
 ```
-###### \java\seedu\address\logic\commands\AddMultipleCommandIntegrationTest.java
+###### /java/seedu/address/logic/commands/AddMultipleCommandIntegrationTest.java
 ``` java
 /**
  * Contains integration tests (interaction with the Model) for {@code AddMultipleCommand}.
@@ -499,7 +507,7 @@ public class AddMultipleCommandIntegrationTest extends GuiUnitTest {
     }
 }
 ```
-###### \java\seedu\address\logic\commands\AddMultipleCommandTest.java
+###### /java/seedu/address/logic/commands/AddMultipleCommandTest.java
 ``` java
 public class AddMultipleCommandTest extends GuiUnitTest {
 
@@ -685,7 +693,7 @@ public class AddMultipleCommandTest extends GuiUnitTest {
 
 }
 ```
-###### \java\seedu\address\logic\commands\FindCommandTest.java
+###### /java/seedu/address/logic/commands/FindCommandTest.java
 ``` java
 
 /**
@@ -815,7 +823,7 @@ public class FindCommandTest extends GuiUnitTest {
 
     }
 ```
-###### \java\seedu\address\logic\commands\MergeCommandTest.java
+###### /java/seedu/address/logic/commands/MergeCommandTest.java
 ``` java
 
 /**
@@ -994,7 +1002,7 @@ public class MergeCommandTest extends GuiUnitTest {
     }
 }
 ```
-###### \java\seedu\address\logic\parser\FindCommandParserTest.java
+###### /java/seedu/address/logic/parser/FindCommandParserTest.java
 ``` java
 public class FindCommandParserTest {
 
@@ -1086,7 +1094,7 @@ public class FindCommandParserTest {
 
 }
 ```
-###### \java\seedu\address\logic\parser\MergeCommandParserTest.java
+###### /java/seedu/address/logic/parser/MergeCommandParserTest.java
 ``` java
 public class MergeCommandParserTest {
     private MergeCommandParser parser = new MergeCommandParser();
@@ -1107,7 +1115,7 @@ public class MergeCommandParserTest {
 
 }
 ```
-###### \java\seedu\address\model\person\PersonContainsKeywordsPredicateTest.java
+###### /java/seedu/address/model/person/PersonContainsKeywordsPredicateTest.java
 ``` java
 public class PersonContainsKeywordsPredicateTest extends GuiUnitTest {
 
@@ -1214,7 +1222,7 @@ public class PersonContainsKeywordsPredicateTest extends GuiUnitTest {
     }
 }
 ```
-###### \java\systemtests\AddMultipleCommandSystemTest.java
+###### /java/systemtests/AddMultipleCommandSystemTest.java
 ``` java
 public class AddMultipleCommandSystemTest extends AddressBookSystemTest {
 
@@ -1304,7 +1312,7 @@ public class AddMultipleCommandSystemTest extends AddressBookSystemTest {
         assertCommandSuccess(command, expectedModel, expectedResultMessage);
     }
 ```
-###### \java\systemtests\MergeCommandSystemTest.java
+###### /java/systemtests/MergeCommandSystemTest.java
 ``` java
 public class MergeCommandSystemTest extends AddressBookSystemTest {
 
