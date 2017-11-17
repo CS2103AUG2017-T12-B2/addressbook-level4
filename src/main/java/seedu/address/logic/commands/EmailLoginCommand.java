@@ -1,4 +1,4 @@
-//@@author Hoang
+//@@author phungtuanhoang1996
 package seedu.address.logic.commands;
 
 import seedu.address.email.Email;
@@ -47,4 +47,4 @@ public class EmailLoginCommand extends Command {
         this.emailManager = emailManager;
     }
 }
-//@@author Hoang
+//@@author phungtuanhoang1996

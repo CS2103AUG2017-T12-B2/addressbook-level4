@@ -1,4 +1,4 @@
-//@@author Hoang
+//@@author phungtuanhoang1996
 package seedu.address.logic.commands;
 
 import static org.junit.Assert.assertEquals;
@@ -55,4 +55,4 @@ public class ExportCommandTest extends GuiUnitTest {
         assertTrue(command.execute().feedbackToUser.equals(new CommandResult(MESSAGE_SUCCESS).feedbackToUser));
     }
 }
-//@@author Hoang
+//@@author phungtuanhoang1996

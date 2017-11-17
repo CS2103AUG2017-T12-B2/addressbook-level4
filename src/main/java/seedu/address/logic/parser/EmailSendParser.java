@@ -1,4 +1,4 @@
-//@@author Hoang
+//@@author phungtuanhoang1996
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
@@ -26,4 +26,4 @@ public class EmailSendParser implements Parser<EmailSendCommand> {
         }
     }
 }
-//@@author Hoang
+//@@author phungtuanhoang1996

@@ -1,4 +1,4 @@
-//@@author Hoang
+//@@author phungtuanhoang1996
 package seedu.address.ui;
 
 import java.util.logging.Logger;
@@ -119,4 +119,4 @@ public class EmailLoginWindow extends UiPart<Region> {
         primaryStage.show();
     }
 }
-//@@author Hoang
+//@@author phungtuanhoang1996

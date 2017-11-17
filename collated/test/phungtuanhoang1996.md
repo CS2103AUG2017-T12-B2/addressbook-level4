@@ -1,5 +1,4 @@
-# Hoang
-###### \java\seedu\address\logic\commands\EmailLoginCommandTest.java
+###### \src\test\java\seedu\address\logic\commands\EmailLoginCommandTest.java
 ``` java
 package seedu.address.logic.commands;
 
@@ -38,11 +37,11 @@ public class EmailLoginCommandTest {
     }
 }
 ```
-###### \java\seedu\address\logic\commands\EmailLoginCommandTest.java
+###### \src\test\java\seedu\address\logic\commands\EmailLoginCommandTest.java
 ``` java
 
 ```
-###### \java\seedu\address\logic\commands\EmailSendCommandTest.java
+###### \src\test\java\seedu\address\logic\commands\EmailSendCommandTest.java
 ``` java
 package seedu.address.logic.commands;
 
@@ -83,11 +82,11 @@ public class EmailSendCommandTest {
     }
 }
 ```
-###### \java\seedu\address\logic\commands\EmailSendCommandTest.java
+###### \src\test\java\seedu\address\logic\commands\EmailSendCommandTest.java
 ``` java
 
 ```
-###### \java\seedu\address\logic\commands\ExportCommandTest.java
+###### \src\test\java\seedu\address\logic\commands\ExportCommandTest.java
 ``` java
 package seedu.address.logic.commands;
 
@@ -146,11 +145,11 @@ public class ExportCommandTest extends GuiUnitTest {
     }
 }
 ```
-###### \java\seedu\address\logic\commands\ExportCommandTest.java
+###### \src\test\java\seedu\address\logic\commands\ExportCommandTest.java
 ``` java
 
 ```
-###### \java\seedu\address\logic\parser\EmailLoginParserTest.java
+###### \src\test\java\seedu\address\logic\parser\EmailLoginParserTest.java
 ``` java
 package seedu.address.logic.parser;
 
@@ -188,11 +187,11 @@ public class EmailLoginParserTest {
     }
 }
 ```
-###### \java\seedu\address\logic\parser\EmailLoginParserTest.java
+###### \src\test\java\seedu\address\logic\parser\EmailLoginParserTest.java
 ``` java
 
 ```
-###### \java\seedu\address\logic\parser\EmailSendParserTest.java
+###### \src\test\java\seedu\address\logic\parser\EmailSendParserTest.java
 ``` java
 package seedu.address.logic.parser;
 
@@ -226,11 +225,11 @@ public class EmailSendParserTest {
     }
 }
 ```
-###### \java\seedu\address\logic\parser\EmailSendParserTest.java
+###### \src\test\java\seedu\address\logic\parser\EmailSendParserTest.java
 ``` java
 
 ```
-###### \java\seedu\address\logic\parser\ExportCommandParserTest.java
+###### \src\test\java\seedu\address\logic\parser\ExportCommandParserTest.java
 ``` java
 package seedu.address.logic.parser;
 
@@ -257,7 +256,7 @@ public class ExportCommandParserTest {
     }
 }
 ```
-###### \java\seedu\address\logic\parser\ExportCommandParserTest.java
+###### \src\test\java\seedu\address\logic\parser\ExportCommandParserTest.java
 ``` java
 
 ```

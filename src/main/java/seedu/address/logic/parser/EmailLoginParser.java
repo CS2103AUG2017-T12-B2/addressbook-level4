@@ -1,4 +1,4 @@
-//@@author Hoang
+//@@author phungtuanhoang1996
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
@@ -39,4 +39,4 @@ public class EmailLoginParser implements Parser<EmailLoginCommand> {
         return new EmailLoginCommand(email, password);
     }
 }
-//@@author Hoang
+//@@author phungtuanhoang1996
