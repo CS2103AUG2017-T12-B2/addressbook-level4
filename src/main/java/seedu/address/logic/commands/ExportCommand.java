@@ -1,4 +1,4 @@
-//@@author Hoang
+//@@author phungtuanhoang1996
 package seedu.address.logic.commands;
 
 import java.io.BufferedWriter;
@@ -74,4 +74,4 @@ public class ExportCommand extends Command {
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }
-//@@author Hoang
+//@@author phungtuanhoang1996

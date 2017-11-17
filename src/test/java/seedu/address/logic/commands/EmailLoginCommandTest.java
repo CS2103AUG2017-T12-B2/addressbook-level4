@@ -1,4 +1,4 @@
-//@@author Hoang
+//@@author phungtuanhoang1996
 package seedu.address.logic.commands;
 
 import static org.junit.Assert.assertEquals;
@@ -35,4 +35,4 @@ public class EmailLoginCommandTest {
                 result.feedbackToUser);
     }
 }
-//@@author Hoang
+//@@author phungtuanhoang1996

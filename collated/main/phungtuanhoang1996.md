@@ -1,5 +1,289 @@
-# Hoang
-###### \java\seedu\address\email\Email.java
+# phungtuanhoang1996
+###### \out\production\resources\view\CSS\EmailLoginWindowDark.css
+``` css
+.root {
+    -fx-background-color: #353B47;
+ }
+
+ .stackpane {
+    -fx-text-alignment: CENTER;
+    -fx-background-radius: 5px;
+    -fx-background-color: #75B0C0;
+ }
+
+ .textLabel {
+    -fx-text-alignment: CENTER;
+    -fx-background-radius: 5px;
+    -fx-background-color: #75B0C0;
+    -fx-font-family: "arial";
+    -fx-font-weight: 900;
+    -fx-font-size: 13px;
+    -fx-fill: white;
+ }
+
+ .textfield {
+    -fx-font-family: "arial";
+    -fx-text-fill: white;
+    -fx-background-radius: 5px;
+    -fx-background-color: #282E3C;
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-border-radius: 5px;
+ }
+
+ .textarea .content {
+    -fx-background-radius: 5px;
+    -fx-background-color: #282E3C;
+    -fx-border-color: black;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1;
+ }
+
+ .textarea {
+    -fx-font-family: "arial";
+    -fx-text-fill: white;
+    -fx-wrap-text: true;
+    -fx-border-color: transparent;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1;
+    -fx-background-color: transparent;
+    -fx-background-radius: 5px;
+ }
+
+ .textarea .viewport {
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+ }
+
+ .feedback {
+    -fx-background-radius: 5px;
+    -fx-background-color: white;
+ }
+
+ .button {
+    -fx-background-radius: 10px;
+    -fx-background-color: transparent;
+    -fx-border-radius: 10px;
+    -fx-border-color: white;
+    -fx-font-family: "arial";
+    -fx-font-weight: 500;
+    -fx-font-size: 16px;
+    -fx-text-fill: white;
+ }
+```
+###### \out\production\resources\view\CSS\EmailLoginWindowDark.css
+``` css
+
+```
+###### \out\production\resources\view\CSS\EmailLoginWindowLight.css
+``` css
+.root {
+    -fx-background-color: #D8D8D8;
+}
+
+.stackpane {
+    -fx-text-alignment: CENTER;
+    -fx-background-radius: 5px;
+    -fx-background-color: #303E9F;
+}
+
+.textLabel {
+    -fx-text-alignment: CENTER;
+    -fx-background-radius: 5px;
+    -fx-background-color: #303E9F;
+    -fx-font-family: "arial";
+    -fx-font-weight: 900;
+    -fx-font-size: 13px;
+    -fx-fill: white;
+}
+
+.textfield {
+    -fx-font-family: "arial";
+    -fx-text-fill: black;
+    -fx-background-radius: 5px;
+    -fx-background-color: white;
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-border-radius: 5px;
+}
+
+.textarea .content {
+    -fx-background-radius: 5px;
+    -fx-background-color: white;
+    -fx-border-color: black;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1;
+}
+
+.textarea {
+    -fx-font-family: "arial";
+    -fx-text-fill: black;
+    -fx-wrap-text: true;
+    -fx-border-color: transparent;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1;
+    -fx-background-color: transparent;
+    -fx-background-radius: 5px;
+}
+
+.textarea .viewport {
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+}
+
+.feedback {
+    -fx-background-radius: 5px;
+    -fx-background-color: white;
+}
+
+.button {
+    -fx-background-radius: 10px;
+    -fx-background-color: derive(#303E9F, 25%);
+    -fx-border-radius: 10px;
+    -fx-border-color: #303E9F;
+    -fx-border-width: 2;
+    -fx-font-family: "arial";
+    -fx-font-weight: 500;
+    -fx-font-size: 16px;
+    -fx-text-fill: white;
+}
+```
+###### \out\production\resources\view\CSS\EmailLoginWindowLight.css
+``` css
+
+```
+###### \out\production\resources\view\CSS\EmailSendWindowDark.css
+``` css
+.root {
+    -fx-background-color: #353B47;
+}
+
+.textfield {
+    -fx-font-family: "arial";
+    -fx-text-fill: white;
+    -fx-background-radius: 5px;
+    -fx-background-color: #282E3C;
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-border-radius: 5px;
+}
+
+.textarea .content {
+    -fx-background-radius: 5px;
+    -fx-background-color: #282E3C;
+    -fx-border-color: black;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1;
+}
+
+.textarea {
+    -fx-font-family: "arial";
+    -fx-text-fill: white;
+    -fx-wrap-text: false;
+    -fx-border-color: transparent;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1;
+    -fx-background-color: transparent;
+    -fx-background-radius: 5px;
+}
+
+.textarea .viewport {
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+}
+
+.textLabel {
+    -fx-text-alignment: CENTER;
+    -fx-background-radius: 5px;
+    -fx-background-color: #75B0C0;
+    -fx-font-family: "arial";
+    -fx-font-weight: 900;
+    -fx-font-size: 13px;
+    -fx-text-fill: white;
+}
+
+.button {
+    -fx-background-radius: 10px;
+    -fx-background-color: transparent;
+    -fx-border-radius: 10px;
+    -fx-border-color: white;
+    -fx-font-family: "arial";
+    -fx-font-weight: 500;
+    -fx-font-size: 16px;
+    -fx-text-fill: white;
+}
+```
+###### \out\production\resources\view\CSS\EmailSendWindowDark.css
+``` css
+
+```
+###### \out\production\resources\view\CSS\EmailSendWindowLight.css
+``` css
+.root {
+    -fx-background-color: #D8D8D8;
+}
+
+.textfield {
+    -fx-font-family: "arial";
+    -fx-text-fill: black;
+    -fx-background-radius: 5px;
+    -fx-background-color: white;
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-border-radius: 5px;
+}
+
+.textarea .content {
+    -fx-background-radius: 5px;
+    -fx-background-color: white;
+    -fx-border-color: black;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1;
+}
+
+.textarea {
+    -fx-font-family: "arial";
+    -fx-text-fill: black;
+    -fx-wrap-text: false;
+    -fx-border-color: transparent;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1;
+    -fx-background-color: transparent;
+    -fx-background-radius: 5px;
+}
+
+.textarea .viewport {
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+}
+
+.textLabel {
+    -fx-text-alignment: CENTER;
+    -fx-background-radius: 5px;
+    -fx-background-color: #303E9F;
+    -fx-font-family: "arial";
+    -fx-font-weight: 900;
+    -fx-font-size: 13px;
+    -fx-text-fill: white;
+}
+
+.button {
+    -fx-background-radius: 10px;
+    -fx-background-color: derive(#303E9F, 25%);
+    -fx-border-radius: 10px;
+    -fx-border-color: #303E9F;
+    -fx-border-width: 2;
+    -fx-font-family: "arial";
+    -fx-font-weight: 500;
+    -fx-font-size: 16px;
+    -fx-text-fill: white;
+}
+```
+###### \out\production\resources\view\CSS\EmailSendWindowLight.css
+``` css
+
+```
+###### \src\main\java\seedu\address\email\Email.java
 ``` java
 package seedu.address.email;
 
@@ -58,11 +342,11 @@ public interface Email {
     void logout();
 }
 ```
-###### \java\seedu\address\email\Email.java
+###### \src\main\java\seedu\address\email\Email.java
 ``` java
 
 ```
-###### \java\seedu\address\email\EmailManager.java
+###### \src\main\java\seedu\address\email\EmailManager.java
 ``` java
 package seedu.address.email;
 
@@ -232,11 +516,11 @@ public class EmailManager implements Email {
     }
 }
 ```
-###### \java\seedu\address\email\EmailManager.java
+###### \src\main\java\seedu\address\email\EmailManager.java
 ``` java
 
 ```
-###### \java\seedu\address\email\exceptions\EmailSendFailedException.java
+###### \src\main\java\seedu\address\email\exceptions\EmailSendFailedException.java
 ``` java
 package seedu.address.email.exceptions;
 
@@ -252,11 +536,11 @@ public class EmailSendFailedException extends Exception {
     }
 }
 ```
-###### \java\seedu\address\email\exceptions\EmailSendFailedException.java
+###### \src\main\java\seedu\address\email\exceptions\EmailSendFailedException.java
 ``` java
 
 ```
-###### \java\seedu\address\email\exceptions\LoginFailedException.java
+###### \src\main\java\seedu\address\email\exceptions\LoginFailedException.java
 ``` java
 package seedu.address.email.exceptions;
 
@@ -273,11 +557,11 @@ public class LoginFailedException extends Exception {
     }
 }
 ```
-###### \java\seedu\address\email\exceptions\LoginFailedException.java
+###### \src\main\java\seedu\address\email\exceptions\LoginFailedException.java
 ``` java
 
 ```
-###### \java\seedu\address\email\exceptions\NotAnEmailException.java
+###### \src\main\java\seedu\address\email\exceptions\NotAnEmailException.java
 ``` java
 package seedu.address.email.exceptions;
 
@@ -290,11 +574,11 @@ public class NotAnEmailException extends Exception {
     }
 }
 ```
-###### \java\seedu\address\email\exceptions\NotAnEmailException.java
+###### \src\main\java\seedu\address\email\exceptions\NotAnEmailException.java
 ``` java
 
 ```
-###### \java\seedu\address\logic\commands\EmailLoginCommand.java
+###### \src\main\java\seedu\address\logic\commands\EmailLoginCommand.java
 ``` java
 package seedu.address.logic.commands;
 
@@ -345,11 +629,11 @@ public class EmailLoginCommand extends Command {
     }
 }
 ```
-###### \java\seedu\address\logic\commands\EmailLoginCommand.java
+###### \src\main\java\seedu\address\logic\commands\EmailLoginCommand.java
 ``` java
 
 ```
-###### \java\seedu\address\logic\commands\EmailLogoutCommand.java
+###### \src\main\java\seedu\address\logic\commands\EmailLogoutCommand.java
 ``` java
 package seedu.address.logic.commands;
 
@@ -387,11 +671,11 @@ public class EmailLogoutCommand extends Command {
     }
 }
 ```
-###### \java\seedu\address\logic\commands\EmailLogoutCommand.java
+###### \src\main\java\seedu\address\logic\commands\EmailLogoutCommand.java
 ``` java
 
 ```
-###### \java\seedu\address\logic\commands\EmailSendCommand.java
+###### \src\main\java\seedu\address\logic\commands\EmailSendCommand.java
 ``` java
 package seedu.address.logic.commands;
 
@@ -451,11 +735,11 @@ public class EmailSendCommand extends Command {
     }
 }
 ```
-###### \java\seedu\address\logic\commands\EmailSendCommand.java
+###### \src\main\java\seedu\address\logic\commands\EmailSendCommand.java
 ``` java
 
 ```
-###### \java\seedu\address\logic\commands\ExportCommand.java
+###### \src\main\java\seedu\address\logic\commands\ExportCommand.java
 ``` java
 package seedu.address.logic.commands;
 
@@ -533,11 +817,11 @@ public class ExportCommand extends Command {
     }
 }
 ```
-###### \java\seedu\address\logic\commands\ExportCommand.java
+###### \src\main\java\seedu\address\logic\commands\ExportCommand.java
 ``` java
 
 ```
-###### \java\seedu\address\logic\commands\FindContainCommand.java
+###### \src\main\java\seedu\address\logic\commands\FindContainCommand.java
 ``` java
 package seedu.address.logic.commands;
 
@@ -576,11 +860,11 @@ public class FindContainCommand extends Command {
     }
 }
 ```
-###### \java\seedu\address\logic\commands\FindContainCommand.java
+###### \src\main\java\seedu\address\logic\commands\FindContainCommand.java
 ``` java
 
 ```
-###### \java\seedu\address\logic\commands\GetEmailCommand.java
+###### \src\main\java\seedu\address\logic\commands\GetEmailCommand.java
 ``` java
 package seedu.address.logic.commands;
 
@@ -622,11 +906,11 @@ public class GetEmailCommand extends Command {
     }
 }
 ```
-###### \java\seedu\address\logic\commands\GetEmailCommand.java
+###### \src\main\java\seedu\address\logic\commands\GetEmailCommand.java
 ``` java
 
 ```
-###### \java\seedu\address\logic\parser\EmailLoginParser.java
+###### \src\main\java\seedu\address\logic\parser\EmailLoginParser.java
 ``` java
 package seedu.address.logic.parser;
 
@@ -669,11 +953,11 @@ public class EmailLoginParser implements Parser<EmailLoginCommand> {
     }
 }
 ```
-###### \java\seedu\address\logic\parser\EmailLoginParser.java
+###### \src\main\java\seedu\address\logic\parser\EmailLoginParser.java
 ``` java
 
 ```
-###### \java\seedu\address\logic\parser\EmailSendParser.java
+###### \src\main\java\seedu\address\logic\parser\EmailSendParser.java
 ``` java
 package seedu.address.logic.parser;
 
@@ -703,11 +987,11 @@ public class EmailSendParser implements Parser<EmailSendCommand> {
     }
 }
 ```
-###### \java\seedu\address\logic\parser\EmailSendParser.java
+###### \src\main\java\seedu\address\logic\parser\EmailSendParser.java
 ``` java
 
 ```
-###### \java\seedu\address\logic\parser\ExportCommandParser.java
+###### \src\main\java\seedu\address\logic\parser\ExportCommandParser.java
 ``` java
 package seedu.address.logic.parser;
 
@@ -760,11 +1044,11 @@ public class ExportCommandParser implements Parser<ExportCommand> {
     }
 }
 ```
-###### \java\seedu\address\logic\parser\ExportCommandParser.java
+###### \src\main\java\seedu\address\logic\parser\ExportCommandParser.java
 ``` java
 
 ```
-###### \java\seedu\address\logic\parser\FindContainCommandParser.java
+###### \src\main\java\seedu\address\logic\parser\FindContainCommandParser.java
 ``` java
 package seedu.address.logic.parser;
 
@@ -866,11 +1150,11 @@ public class FindContainCommandParser implements Parser<FindContainCommand> {
     }
 }
 ```
-###### \java\seedu\address\logic\parser\FindContainCommandParser.java
+###### \src\main\java\seedu\address\logic\parser\FindContainCommandParser.java
 ``` java
 
 ```
-###### \java\seedu\address\model\person\PersonContainsLettersPredicate.java
+###### \src\main\java\seedu\address\model\person\PersonContainsLettersPredicate.java
 ``` java
 package seedu.address.model.person;
 
@@ -942,11 +1226,11 @@ public class PersonContainsLettersPredicate implements Predicate<ReadOnlyPerson>
     }
 }
 ```
-###### \java\seedu\address\model\person\PersonContainsLettersPredicate.java
+###### \src\main\java\seedu\address\model\person\PersonContainsLettersPredicate.java
 ``` java
 
 ```
-###### \java\seedu\address\ui\EmailLoginWindow.java
+###### \src\main\java\seedu\address\ui\EmailLoginWindow.java
 ``` java
 package seedu.address.ui;
 
@@ -1069,11 +1353,11 @@ public class EmailLoginWindow extends UiPart<Region> {
     }
 }
 ```
-###### \java\seedu\address\ui\EmailLoginWindow.java
+###### \src\main\java\seedu\address\ui\EmailLoginWindow.java
 ``` java
 
 ```
-###### \java\seedu\address\ui\EmailSendWindow.java
+###### \src\main\java\seedu\address\ui\EmailSendWindow.java
 ``` java
 package seedu.address.ui;
 
@@ -1197,11 +1481,11 @@ public class EmailSendWindow extends UiPart<Region> {
     }
 }
 ```
-###### \java\seedu\address\ui\EmailSendWindow.java
+###### \src\main\java\seedu\address\ui\EmailSendWindow.java
 ``` java
 
 ```
-###### \java\seedu\address\ui\FunctionButtons.java
+###### \src\main\java\seedu\address\ui\FunctionButtons.java
 ``` java
 package seedu.address.ui;
 
@@ -1355,11 +1639,11 @@ public class FunctionButtons extends UiPart<Region> {
     }
 }
 ```
-###### \java\seedu\address\ui\FunctionButtons.java
+###### \src\main\java\seedu\address\ui\FunctionButtons.java
 ``` java
 
 ```
-###### \java\seedu\address\ui\SearchBar.java
+###### \src\main\java\seedu\address\ui\SearchBar.java
 ``` java
 package seedu.address.ui;
 
@@ -1493,7 +1777,291 @@ public class SearchBar extends UiPart<Region> {
     }
 }
 ```
-###### \java\seedu\address\ui\SearchBar.java
+###### \src\main\java\seedu\address\ui\SearchBar.java
 ``` java
+
+```
+###### \src\main\resources\view\CSS\EmailLoginWindowDark.css
+``` css
+.root {
+    -fx-background-color: #353B47;
+ }
+
+ .stackpane {
+    -fx-text-alignment: CENTER;
+    -fx-background-radius: 5px;
+    -fx-background-color: #75B0C0;
+ }
+
+ .textLabel {
+    -fx-text-alignment: CENTER;
+    -fx-background-radius: 5px;
+    -fx-background-color: #75B0C0;
+    -fx-font-family: "arial";
+    -fx-font-weight: 900;
+    -fx-font-size: 13px;
+    -fx-fill: white;
+ }
+
+ .textfield {
+    -fx-font-family: "arial";
+    -fx-text-fill: white;
+    -fx-background-radius: 5px;
+    -fx-background-color: #282E3C;
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-border-radius: 5px;
+ }
+
+ .textarea .content {
+    -fx-background-radius: 5px;
+    -fx-background-color: #282E3C;
+    -fx-border-color: black;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1;
+ }
+
+ .textarea {
+    -fx-font-family: "arial";
+    -fx-text-fill: white;
+    -fx-wrap-text: true;
+    -fx-border-color: transparent;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1;
+    -fx-background-color: transparent;
+    -fx-background-radius: 5px;
+ }
+
+ .textarea .viewport {
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+ }
+
+ .feedback {
+    -fx-background-radius: 5px;
+    -fx-background-color: white;
+ }
+
+ .button {
+    -fx-background-radius: 10px;
+    -fx-background-color: transparent;
+    -fx-border-radius: 10px;
+    -fx-border-color: white;
+    -fx-font-family: "arial";
+    -fx-font-weight: 500;
+    -fx-font-size: 16px;
+    -fx-text-fill: white;
+ }
+```
+###### \src\main\resources\view\CSS\EmailLoginWindowDark.css
+``` css
+
+```
+###### \src\main\resources\view\CSS\EmailLoginWindowLight.css
+``` css
+.root {
+    -fx-background-color: #D8D8D8;
+}
+
+.stackpane {
+    -fx-text-alignment: CENTER;
+    -fx-background-radius: 5px;
+    -fx-background-color: #303E9F;
+}
+
+.textLabel {
+    -fx-text-alignment: CENTER;
+    -fx-background-radius: 5px;
+    -fx-background-color: #303E9F;
+    -fx-font-family: "arial";
+    -fx-font-weight: 900;
+    -fx-font-size: 13px;
+    -fx-fill: white;
+}
+
+.textfield {
+    -fx-font-family: "arial";
+    -fx-text-fill: black;
+    -fx-background-radius: 5px;
+    -fx-background-color: white;
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-border-radius: 5px;
+}
+
+.textarea .content {
+    -fx-background-radius: 5px;
+    -fx-background-color: white;
+    -fx-border-color: black;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1;
+}
+
+.textarea {
+    -fx-font-family: "arial";
+    -fx-text-fill: black;
+    -fx-wrap-text: true;
+    -fx-border-color: transparent;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1;
+    -fx-background-color: transparent;
+    -fx-background-radius: 5px;
+}
+
+.textarea .viewport {
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+}
+
+.feedback {
+    -fx-background-radius: 5px;
+    -fx-background-color: white;
+}
+
+.button {
+    -fx-background-radius: 10px;
+    -fx-background-color: derive(#303E9F, 25%);
+    -fx-border-radius: 10px;
+    -fx-border-color: #303E9F;
+    -fx-border-width: 2;
+    -fx-font-family: "arial";
+    -fx-font-weight: 500;
+    -fx-font-size: 16px;
+    -fx-text-fill: white;
+}
+```
+###### \src\main\resources\view\CSS\EmailLoginWindowLight.css
+``` css
+
+```
+###### \src\main\resources\view\CSS\EmailSendWindowDark.css
+``` css
+.root {
+    -fx-background-color: #353B47;
+}
+
+.textfield {
+    -fx-font-family: "arial";
+    -fx-text-fill: white;
+    -fx-background-radius: 5px;
+    -fx-background-color: #282E3C;
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-border-radius: 5px;
+}
+
+.textarea .content {
+    -fx-background-radius: 5px;
+    -fx-background-color: #282E3C;
+    -fx-border-color: black;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1;
+}
+
+.textarea {
+    -fx-font-family: "arial";
+    -fx-text-fill: white;
+    -fx-wrap-text: false;
+    -fx-border-color: transparent;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1;
+    -fx-background-color: transparent;
+    -fx-background-radius: 5px;
+}
+
+.textarea .viewport {
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+}
+
+.textLabel {
+    -fx-text-alignment: CENTER;
+    -fx-background-radius: 5px;
+    -fx-background-color: #75B0C0;
+    -fx-font-family: "arial";
+    -fx-font-weight: 900;
+    -fx-font-size: 13px;
+    -fx-text-fill: white;
+}
+
+.button {
+    -fx-background-radius: 10px;
+    -fx-background-color: transparent;
+    -fx-border-radius: 10px;
+    -fx-border-color: white;
+    -fx-font-family: "arial";
+    -fx-font-weight: 500;
+    -fx-font-size: 16px;
+    -fx-text-fill: white;
+}
+```
+###### \src\main\resources\view\CSS\EmailSendWindowDark.css
+``` css
+
+```
+###### \src\main\resources\view\CSS\EmailSendWindowLight.css
+``` css
+.root {
+    -fx-background-color: #D8D8D8;
+}
+
+.textfield {
+    -fx-font-family: "arial";
+    -fx-text-fill: black;
+    -fx-background-radius: 5px;
+    -fx-background-color: white;
+    -fx-border-color: black;
+    -fx-border-width: 1;
+    -fx-border-radius: 5px;
+}
+
+.textarea .content {
+    -fx-background-radius: 5px;
+    -fx-background-color: white;
+    -fx-border-color: black;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1;
+}
+
+.textarea {
+    -fx-font-family: "arial";
+    -fx-text-fill: black;
+    -fx-wrap-text: false;
+    -fx-border-color: transparent;
+    -fx-border-radius: 5px;
+    -fx-border-width: 1;
+    -fx-background-color: transparent;
+    -fx-background-radius: 5px;
+}
+
+.textarea .viewport {
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+}
+
+.textLabel {
+    -fx-text-alignment: CENTER;
+    -fx-background-radius: 5px;
+    -fx-background-color: #303E9F;
+    -fx-font-family: "arial";
+    -fx-font-weight: 900;
+    -fx-font-size: 13px;
+    -fx-text-fill: white;
+}
+
+.button {
+    -fx-background-radius: 10px;
+    -fx-background-color: derive(#303E9F, 25%);
+    -fx-border-radius: 10px;
+    -fx-border-color: #303E9F;
+    -fx-border-width: 2;
+    -fx-font-family: "arial";
+    -fx-font-weight: 500;
+    -fx-font-size: 16px;
+    -fx-text-fill: white;
+}
+```
+###### \src\main\resources\view\CSS\EmailSendWindowLight.css
+``` css
 
 ```

@@ -1,4 +1,4 @@
-//@@author Hoang
+//@@author phungtuanhoang1996
 package seedu.address.ui;
 
 import java.util.ArrayList;
@@ -150,4 +150,4 @@ public class FunctionButtons extends UiPart<Region> {
         }
     }
 }
-//@@author Hoang
+//@@author phungtuanhoang1996
