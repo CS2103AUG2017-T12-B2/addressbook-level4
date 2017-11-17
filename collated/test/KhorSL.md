@@ -289,6 +289,9 @@
         ArrayList<String> expectedSingleDateList = new ArrayList<>();
         expectedSingleDateList.add("20/10/2017");
 
+        ArrayList<String> expectedLeapYearDateList = new ArrayList<>();
+        expectedLeapYearDateList.add("29/02/2016");
+
         ArrayList<String> expectedMultipleDatesList1 = new ArrayList<>();
         expectedMultipleDatesList1.add("20/10/2017");
         expectedMultipleDatesList1.add("20/10/2018");
@@ -306,6 +309,11 @@
         assertCorrectDateResult("20/10/17", new ArrayList<>());
         assertCorrectDateResult("01/13/2017", new ArrayList<>()); // date wrong format with mm/dd/yyyy
         assertCorrectDateResult("01-01-2017", new ArrayList<>()); // date dd-mm-yyyy
+
+        // leap years (boundary case)
+        assertCorrectDateResult("29/02/2017", new ArrayList<>());
+        assertCorrectDateResult("31/02/2016", new ArrayList<>());
+        assertCorrectDateResult("29/02/2016", expectedLeapYearDateList);
 
         // single date
         assertCorrectDateResult("20/10/2017", expectedSingleDateList);
