@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.3">
+<title>Blast! - Testing Script</title>
+<link rel="stylesheet" href="stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Blast! - Testing Script</h1>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Legend:
+<code>INPUTS</code> command to type (e.g. <strong>select 1</strong> means to execute ‘select 1’ in the command box)<br></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Expected results are contained here</code></pre>
+</div>
+</div>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle"></div>
+<ul class="sectlevel2">
+<li><a href="#set-up">1. Set up</a></li>
+<li><a href="#add">2. Add</a></li>
+<li><a href="#edit">3. Edit</a></li>
+<li><a href="#delete">4. Delete</a></li>
+<li><a href="#merge">5. Merge</a></li>
+<li><a href="#find">6. Find</a></li>
+<li><a href="#add-multiple-persons-with-a-txt-file">7. Add multiple persons with a .txt file</a></li>
+<li><a href="#export">8. Export</a></li>
+<li><a href="#email-login">9. Email Login</a></li>
+<li><a href="#email-send">10. Email Send</a></li>
+<li><a href="#find-without-matching-whole-keyword">11. Find Without Matching Whole Keyword</a></li>
+<li><a href="#comment">12. Comment</a></li>
+<li><a href="#appoint">13. Appoint</a></li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="set-up"><a class="link" href="#set-up">1. Set up</a></h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Download all documents (i.e. all the test files) uploaded on v1.5 release.<br></p>
+</li>
+<li>
+<p>Create a folder named ‘Blast’ and place the .jar file in<br></p>
+</li>
+<li>
+<p>Create a folder named ‘data’ at the root of ‘Blast’ folder<br></p>
+</li>
+<li>
+<p>Create a folder named ‘avatars’ at the root of ‘Blast’ folder<br></p>
+</li>
+<li>
+<p>Place the downloaded test image into <code>avatars</code> folder<br></p>
+</li>
+<li>
+<p>Place the downloaded test documents into <code>data</code> folder<br></p>
+</li>
+<li>
+<p>Launch the application</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="add"><a class="link" href="#add">2. Add</a></h3>
+<div class="paragraph">
+<p><code>add</code><br></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Invalid command format!
+add or a: Adds a person to the address book. Parameters: n/NAME p/PHONE e/EMAIL a/ADDRESS i/AVATAR IMAGE FILE [r/TAG]...
+Example: add n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 i/john_doe.png r/friends r/owesMoney</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>add n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 i/john_doe.png r/friends r/owesMoney</code><br></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>File path provided must point to a valid, readable image.</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>add n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 r/friends r/owesMoney</code><br></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>New person added: John Doe Phone: 98765432 Email: johnd@example.com Address: 311, Clementi Ave 2, #02-25 Comments: 311, Clementi Ave 2, #02-25 Appointments:  Tags: [owesMoney][friends]</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>undo</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Undo success!</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>add john</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Invalid command format!
+add or a: Adds a person to the address book. Parameters: n/NAME p/PHONE e/EMAIL a/ADDRESS i/AVATAR IMAGE FILE [r/TAG]...
+Example: add n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 i/john_doe.png r/friends r/owesMoney</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>add n/John Doe</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Invalid command format!
+add or a: Adds a person to the address book. Parameters: n/NAME p/PHONE e/EMAIL a/ADDRESS i/AVATAR IMAGE FILE [r/TAG]...
+Example: add n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 i/john_doe.png r/friends r/owesMoney</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>add n/John Doe p/98765432</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Invalid command format!
+add or a: Adds a person to the address book. Parameters: n/NAME p/PHONE e/EMAIL a/ADDRESS i/AVATAR IMAGE FILE [r/TAG]...
+Example: add n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 i/john_doe.png r/friends r/owesMoney</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>add n/John Doe p/98765432 e/johnd@example.com</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Invalid command format!
+add or a: Adds a person to the address book. Parameters: n/NAME p/PHONE e/EMAIL a/ADDRESS i/AVATAR IMAGE FILE [r/TAG]...
+Example: add n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 i/john_doe.png r/friends r/owesMoney</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>add n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>New person added: John Doe Phone: 98765432 Email: johnd@example.com Address: 311, Clementi Ave 2, #02-25 Comments: 311, Clementi Ave 2, #02-25 Appointments:  Tags:</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>add n/John Doe p/!!!!! e/johnd@example.com a/311, Clementi Ave 2, #02-25</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Phone numbers can only contain numbers, and should be at least 3 digits long</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>add n/John Doe p/98765432 e/johnd!example.com a/311, Clementi Ave 2, #02-25</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Person emails should be 2 alphanumeric/period strings separated by '@'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="edit"><a class="link" href="#edit">3. Edit</a></h3>
+<div class="paragraph">
+<p><code>edit</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Invalid command format!
+edit or e: Edits the details of the person identified by the index number used in the last person listing. Existing values will be overwritten by the input values.
+Parameters: INDEX (must be a positive integer) [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [i/AVATAR] [r/TAG]...
+Example: edit 1 p/91234567 e/johndoe@example.com</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p>`edit 3 p/91234567 e/johndoe@example.com `</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Edited Person: Alex Yeoh Phone: 91234567 Email: johndoe@example.com Address: Blk 30 Geylang Street 29, #06-40 Comments: Blk 30 Geylang Street 29, #06-40 Appointments: 20/10/2017 10:10:50 Tags: [student]</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>edit -1 p/91234567</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Invalid command format!
+edit or e: Edits the details of the person identified by the index number used in the last person listing. Existing values will be overwritten by the input values.
+Parameters: INDEX (must be a positive integer) [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [i/AVATAR] [r/TAG]...
+Example: edit 1 p/91234567 e/johndoe@example.com</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="delete"><a class="link" href="#delete">4. Delete</a></h3>
+<div class="paragraph">
+<p><code>delete 21</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Deleted Person: John Doe Phone: 98765432 Email: johnd@example.com Address: 311, Clementi Ave 2, #02-25 Comments: 311, Clementi Ave 2, #02-25 Appointments:  Tags:</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>delete -1</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Invalid command format!
+delete: Deletes the person identified by the index number used in the last person listing.
+Parameters: INDEX (must be a positive integer)
+Example: delete 1</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>delete 1000</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>The person index provided is invalid</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="merge"><a class="link" href="#merge">5. Merge</a></h3>
+<div class="paragraph">
+<p><code>merge abc</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>File not found.</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>merge data/personstoadd.txt</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Unable to convert file data.</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>merge data/newfile.xml</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>File merged successfully.</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>undo</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Undo success!</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="find"><a class="link" href="#find">6. Find</a></h3>
+<div class="paragraph">
+<p><code>find</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Invalid command format!
+find or f: Finds all persons whose names contain any of the specified keywords (case-insensitive) and displays them as a list with index numbers.
+Parameters: PREFIX_PERSON_ATTRIBUTE/KEYWORD [MORE_KEYWORDS]... [MORE_PARAMETERS]...
+Examples:
+1) find n/alice bob charlie
+2) find r/family friends
+3) find n/alice bob charlie r/family friends</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>find n/charlotte</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>1 persons listed!</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>find ap/15:50</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>2 persons listed!</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>find r/2017 T12</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>5 persons listed!</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>find r/2016 T12</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>2 persons listed!</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>find n/david alex ap/15:50 c/funny r/friends</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>6 persons listed!</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="add-multiple-persons-with-a-txt-file"><a class="link" href="#add-multiple-persons-with-a-txt-file">7. Add multiple persons with a .txt file</a></h3>
+<div class="paragraph">
+<p><code>multiple</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Invalid command format!
+multiple: Adds multiple person to the address book. Parameters: FILE_PATH
+Example: multiple ./data/personsToAdd.txt</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>multiple</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Invalid person format!
+Person format in .txt file: Parameters: n/NAME p/PHONE e/EMAIL a/ADDRESS i/AVATAR IMAGE FILE [r/TAG]...
+Example: multiple n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 i/john_doe.png r/friends r/owesMoney</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>multiple abc</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Unable to open file 'abc'</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>multiple data/personstoadd.txt</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>New person(s) added:
+Casey Teo Phone: 85355255 Email: caseyteo@gmail.com Address: 123, Jurong West Ave 6, #08-111 Comments: 123, Jurong West Ave 6, #08-111 Appointments:  Tags: [2017][T12]
+Benson Kim Phone: 98765432 Email: bensonkim@hotmail.com Address: 311, Clementi Ave 2, #02-25 Comments: 311, Clementi Ave 2, #02-25 Appointments:  Tags: [2017][T12]
+Andrew Lam Phone: 95352563 Email: andrewlam@example.com Address: wall street 1 Comments: wall street 1 Appointments:  Tags: [2017][T12]
+Tom Tan Phone: 8482424 Email: tomtan@gmail.com Address: little india 1 Comments: little india 1 Appointments:  Tags: [2016][T12]
+Tiffany Chua Phone: 98774621 Email: tiffanychua@example.com Address: Block 312, Amy Street 1 Comments: Block 312, Amy Street 1 Appointments:  Tags: [2016][T12]
+Harry Toh Phone: 22222222 Email: harrytoh@hotmail.com Address: Block 123, Bobby Street 3 Comments: Block 123, Bobby Street 3 Appointments:  Tags: [friend][husband]
+Adison Pauline Phone: 85355255 Email: adison@gmail.com Address: 123, Jurong West Ave 6, #08-111 Comments: 123, Jurong West Ave 6, #08-111 Appointments:  Tags: [2016][T17]
+Henesy Meier Phone: 98765432 Email: hene@gmail.com Address: 311, Clementi Ave 3, #02-25 Comments: 311, Clementi Ave 3, #02-25 Appointments:  Tags: [2016][T17]
+Robert Kurz Phone: 95352563 Email: kurz@hotmail.com Address: wall street 2 Comments: wall street 2 Appointments:  Tags: [2016][T17]
+Gerald Dela Phone: 8482424 Email: gerald@hotmail.com Address: little india 2 Comments: little india 2 Appointments:  Tags: [2016][T17]
+Donavan King Phone: 98374237 Email: donavan@gmail.com Address: Block 312, Amy Street 1 Comments: Block 312, Amy Street 1 Appointments:  Tags: [2017][T17]
+John Choo Phone: 87635123 Email: johnchoo@hotmail.com Address: Block 123, Bobby Street 3 Comments: Block 123, Bobby Street 3 Appointments:  Tags: [2017][T17]</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>undo</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Undo success!</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="export"><a class="link" href="#export">8. Export</a></h3>
+<div class="paragraph">
+<p><code>export</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Invalid command format!
+export: export the address book to a chosen file type
+Parameters: export .txt [PATH]
+Example: export .txt C:/user/user/desktop</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>export .txt C:/address book</code> (on Windows)<br>
+<code>export .txt /Users/[YOUR USER NAME]/address book</code> (on MacOS)<br>
+<code>export .txt /home/address book</code> (on Linux)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Successfully exported</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Also please check that the respective path has an <code>addressbook.txt</code> file containing all contacts.
+---
+<code>export .txt</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Invalid command format!
+export: export the address book to a chosen file type
+Parameters: export .txt [PATH]
+Example: export .txt C:/user/user/desktop</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>export .txt C:\Windows</code> (on Windows only. Linux and MacOS do not apply)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Access denied</code></pre>
+</div>
+</div>
+<hr>
+</div>
+<div class="sect2">
+<h3 id="email-login"><a class="link" href="#email-login">9. Email Login</a></h3>
+<div class="paragraph">
+<p><strong>Note</strong>: UI buttons will not update automatically if logged in (or out) from console. However, clicking the login button will update the login status accordingly.
+<code>email_login</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Invalid command format!
+email_login: log in with an email address
+Parameters: email_login "[EMAIL]" "[PASSWORD]"
+Example: email_login "example@gmail.com"" example password"</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>email_login <a href="mailto:cs2103testacc@gmail.com">cs2103testacc@gmail.com</a> "testpass"</code><br>
+<code>email_login <a href="mailto:cs2103testacc@gmail.com">cs2103testacc@gmail.com</a> testpass</code><br>
+<code>email_login "<a href="mailto:cs2103testacc@gmail.com">cs2103testacc@gmail.com</a>" testpass</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Invalid command format!
+email_login: log in with an email address
+Parameters: email_login "[EMAIL]" "[PASSWORD]"
+Example: email_login "example@gmail.com"" example password"</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>email_login "<a href="mailto:123@hotmail.com">123@hotmail.com</a>" "password"</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Log in failed: The email domain is not supported</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>email_login "123hotmail" "password"</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>The given email is not valid</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>email_login "<a href="mailto:cs2103testacc@gmail.com">cs2103testacc@gmail.com</a>" "wrongpass"</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Log in failed: It could be one of the following reasons:
+1. Your Internet connection is not working
+2. Your email and password combination is not correct
+3. Allow less secure apps is not enable in your email</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>email_login "<a href="mailto:cs2103testacc@gmail.com">cs2103testacc@gmail.com</a>" "testpass"</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Successfully logged in as cs2103testacc@gmail.com</code></pre>
+</div>
+</div>
+<hr>
+</div>
+<div class="sect2">
+<h3 id="email-send"><a class="link" href="#email-send">10. Email Send</a></h3>
+<div class="paragraph">
+<p><strong>Before testing this section please enter this command <code>email_login "<a href="mailto:cs2103testacc@gmail.com">cs2103testacc@gmail.com</a>" "testpass"</code></strong>
+---
+<code>email_send</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Invalid command format!
+email_send: Send an email to one or more recipients
+Requires an logged in email using email_login
+Parameters: email_send "[RECIPIENTS]" "[TITLE]" "[BODY]"
+Example: email_send "example@gmail.com;example2@yahoo.com" "Test" "Test Body"</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>email_send <a href="mailto:cs2103testacc@gmail.com">cs2103testacc@gmail.com</a> "Title" "Body"</code><br>
+<code>email_send "<a href="mailto:cs2103testacc@gmail.com">cs2103testacc@gmail.com</a>" Title Body</code><br>
+<code>email_send <a href="mailto:cs2103testacc@gmail.com">cs2103testacc@gmail.com</a> "Title" "Body"</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Invalid command format!
+email_send: Send an email to one or more recipients
+Requires an logged in email using email_login
+Parameters: email_send "[RECIPIENTS]" "[TITLE]" "[BODY]"
+Example: email_send "example@gmail.com;example2@yahoo.com" "Test" "Test Body"</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>email_send "<a href="mailto:cs2103testacc@gmail.com">cs2103testacc@gmail.com</a>" "Title" "Body"</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Successfully sent</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Please substitute <code>[ANY OF YOUR EMAIL]</code> with a suitable email address.</strong>
+<code>email_send "<a href="mailto:cs2103testacc@gmail.com">cs2103testacc@gmail.com</a>;[ANY OF YOUR EMAIL]" "Title" "Body"</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Successfully sent</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Also please check that you have received an email from <a href="mailto:cs2103testacc@gmail.com">cs2103testacc@gmail.com</a> with correct title and body.
+---
+=== Email Logout
+<code>email_logout</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Logged out</code></pre>
+</div>
+</div>
+<hr>
+</div>
+<div class="sect2">
+<h3 id="find-without-matching-whole-keyword"><a class="link" href="#find-without-matching-whole-keyword">11. Find Without Matching Whole Keyword</a></h3>
+<div class="paragraph">
+<p><code>find_contain</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Invalid command format!
+find_contain: Finds all persons whose name / phone / address / email contains the given string
+Parameters: find_contain PREFIX_PERSON_ATTRIBUTE/STRING [MORE_PARAMETERS]...Examples:
+1) find_contain n/david li p/91
+2) find_contain e/gmail a/jurong</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>find_contain n/David Beckham</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>1 persons listed!</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>find_contain n/avid</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>2 persons listed!</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>find_contain n/vi p/99</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>2 persons listed</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="comment"><a class="link" href="#comment">12. Comment</a></h3>
+<div class="paragraph">
+<p><code>comment 3 c/Likes programming.</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Added comment to Person: Alex Yeoh Phone: 87438807 Email: alexyeoh@example.com Address: Blk 30 Geylang Street 29, #06-40 Comments: Likes programming. Appointments:  Tags: [friends]</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>comment 4 c/</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Removed comment from Person: Bernice Yu Phone: 99272758 Email: berniceyu@example.com Address: Blk 30 Lorong 3 Serangoon Gardens, #07-18 Comments:  Appointments: 20/10/2017 15:50 Tags: [colleagues][friends]</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>comment 1000</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>The person index provided is invalid</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>comment abc</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Invalid command format!
+comment: Edits the comment of the person identified by the index number used in the last person listing. Existing comment will be overwritten by the input.
+Parameters: INDEX (must be a positive integer) c/[COMMENT]
+Example: comment 1 c/Likes to swim.</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="appoint"><a class="link" href="#appoint">13. Appoint</a></h3>
+<div class="paragraph">
+<p><code>appoint 2 ap/25/12/2017 14:30</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Added appoint to Person: Bill Gates Phone: 11122345 Email: bill.g@microsoft.com Address: 311, Clementi Ave 2, #02-25 Comments:  Appointments: 25/12/2017 14:30 Tags: [2016][T12]</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>appoint 4 ap/</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Removed appoint from Person: Bernice Yu Phone: 99272758 Email: berniceyu@example.com Address: Blk 30 Lorong 3 Serangoon Gardens, #07-18 Comments:  Appointments:  Tags: [colleagues][friends]</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>appoint 200</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>The person index provided is invalid</code></pre>
+</div>
+</div>
+<hr>
+<div class="paragraph">
+<p><code>appoint cdf</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>Invalid command format!
+appoint: Edits the appoint of the person identified by the index number used in the last person listing. Existing appoint will be overwritten by the input.
+Parameters: INDEX (must be a positive integer) ap/[APPOINT]
+Example: appoint 1 ap/20/10/2017 14:30</code></pre>
+</div>
+</div>
+<hr>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2017-11-17 16:22:07 +00:00
+</div>
+</div>
+</body>
+</html>
