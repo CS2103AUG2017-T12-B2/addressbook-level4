@@ -545,7 +545,7 @@ In the next version a format will be incorporated to standardize theme name, res
 // end::themeing[]
 
 === Commenting
-The commenting feature was implemented as an end-to-end feature that touched upon all components.
+The commenting feature was implemented as an end-to-end feature that touched upon all components. This feature was modeled off of the `Remark` command that was explained as an example of an enhancement in section `A.2` of the Developer Guide.
 
 The implementation process consisted of +
 1) Introducing an empty 'comment' command which does nothing, +
